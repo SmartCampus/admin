@@ -1,0 +1,14 @@
+{% extends "SmartCampusBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Index{% endblock %}
+
+{% block body %}
+
+    <h1>Ajout d'un capteur</h1>
+
+	{% include "SmartCampusBundle:Smart:formulaire.html.twig" %}
+    <p>
+      Valider ?
+    </p>
+	
+{% endblock %}

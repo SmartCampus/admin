@@ -1,0 +1,26 @@
+smartcampus_accueil:
+    path:  /
+    defaults: { _controller: SmartCampusBundle:Smart:index }
+
+smartcampus_voir:
+    path:  /capteurs/{id}
+    defaults: { _controller: SmartCampusBundle:Smart:voir, format: html }
+    requirements :
+        id: \d+
+        format: html|xml
+
+smartcampus_ajouter:
+    path:  /ajouter
+    defaults: { _controller: SmartCampusBundle:Smart:ajouter }
+
+smartcampus_modifier:
+    path:  /modifier/{id}
+    defaults: { _controller: SmartCampusBundle:Smart:modifier }
+    requirements:
+        id: \d+
+
+smartcampus_supprimer:
+    path:  /supprimer/{id}
+    defaults: { _controller: SmartCampusBundle:Smart:supprimer }
+    requirements:
+        id: \d+

@@ -1,0 +1,7 @@
+parameters:
+#    smart_campus.example.class: Smart\CampusBundle\Example
+
+services:
+#    smart_campus.example:
+#        class: %smart_campus.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
