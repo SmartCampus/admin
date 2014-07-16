@@ -1,0 +1,38 @@
+<!--<style type="text/css">
+    .lien
+    {
+        color: darkblue;
+    }
+    
+    .lien:hover
+    {
+        cursor: hand;
+    }
+</style> -->
+
+<div class="panel panel-default">
+    <div class="panel-heading">Liste des capteurs</div>
+    <table class="table">
+        <tr>
+            <th>name</th>
+            <th>kind</th>
+            <th>frequency</th>
+        </tr>
+        <!--{% set ret = capAll %}-->
+        {% for cap in capAll %}
+            {% if (tag == NULL) or (tag == "indiferent") or (cap.kind == tag) %}
+                <!--<tr class="lien" onclick="{{ path('smartcampus_voir', {'id': cap.id}) }}">-->
+                    <td>
+                        <a href="{{ path('smartcampus_voir', {'id': cap.id}) }}" class="btn">{{ cap.name }}</a>
+                    </td>
+                    <td>
+                        <a href="{{ path('smartcampus_voir', {'id': cap.id}) }}" class="btn">{{ cap.kind }}</a>
+                    </td>
+                    <td>
+                        <a href="{{ path('smartcampus_voir', {'id': cap.id}) }}" class="btn">{{ cap.frequency }}</a>
+                    </td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+</div>

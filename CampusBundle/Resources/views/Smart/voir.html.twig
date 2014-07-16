@@ -1,0 +1,30 @@
+{% extends "SmartCampusBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Visualisation{% endblock %}
+
+{% block body %}
+
+    <h1>Visualisation</h1>
+
+    <!-- Boite dialogue Modification capteur -->
+    {% include "SmartCampusBundle:Smart:dialogue.html.twig" %}
+
+    <div class="well">
+        Capteur : {{ capteur.name }} <br>
+        Kind : {{ capteur.kind }} <br>
+        Frequency : {{ capteur.frequency }} <br>
+    </div>
+
+    <a href="{{ path('smartcampus_accueil') }}" class="btn">
+        Retour à l'accueil
+    </a>
+
+    <a href="{{ path('smartcampus_modifier', {'id': capteur.id}) }}" class="btn btn-primary">
+        Modifier
+    </a>
+
+    <a href="{{ path('smartcampus_supprimer', {'id': capteur.id}) }}" class="btn btn btn-danger">
+        Supprimer
+    </a>
+	
+{% endblock %}

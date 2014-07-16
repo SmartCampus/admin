@@ -5,14 +5,17 @@
 {% block body %}
     <h1>{{ titre }}</h1>
 
-	<p>
-      {% for message in app.session.flashbag.get('info') %}
-        <p>{{ message }}</p>
-      {% endfor %}
-    </p>
-	
-    <p>
-      Blablablà
-	  marche toujours
-    </p>
+    <!-- Boite dialogue Information capteur -->
+    {% include "SmartCampusBundle:Smart:dialogue.html.twig" %}
+
+    <!-- Zone filtre pour la recherche -->
+    {% include "SmartCampusBundle:Smart:filtre.html.twig" %}
+
+    <!-- Zone affichage de la recherche -->
+    {% include "SmartCampusBundle:Smart:recherche.html.twig" %}
+
+    <a href="{{ path('smartcampus_ajouter') }}" class="btn btn-primary">
+        Ajouter
+    </a>
+
 {% endblock %}

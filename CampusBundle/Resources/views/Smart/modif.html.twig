@@ -1,13 +1,15 @@
 {% extends "SmartCampusBundle::layout.html.twig" %}
 
-{% block title %}{{ parent() }} - Index{% endblock %}
+{% block title %}{{ parent() }} - Modificatiop{% endblock %}
 
 {% block body %}
 
-    <h1>Modification</h1>
+    <h1>Modification du capteur {{ capteur.name }}</h1>
 
-    <p>
-      Modification du capteur {{ id }}
-    </p>
+    {% include "SmartCampusBundle:Smart:formulaire.html.twig" %}
 	
+    <a href="{{ path('smartcampus_voir', {'id': capteur.id}) }}" class="btn">
+        Retour à {{ capteur.name }}
+    </a>
+
 {% endblock %}

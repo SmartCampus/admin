@@ -1,0 +1,22 @@
+{% extends "SmartCampusBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Suppression{% endblock %}
+
+{% block body %}
+
+    <h1>Suppression</h1>
+
+    <p>
+        Etes-vous certain de vouloir supprimer le capteur {{ capteur.name }} ?
+    </p>
+
+    <form action="{{ path('smartcampus_supprimer', {'id': capteur.id}) }}" method="post">
+        <a href="{{ path('smartcampus_voir', {'id': capteur.id}) }}" class="btn">
+            <i class="icon-chevron-left"></i>
+    Retour au capteur {{ capteur.name }}
+        </a>
+        <input type="submit" value="Supprimer" class="btn btn-danger" />
+    {{ form_rest(form) }}
+    </form>
+
+{% endblock %}
