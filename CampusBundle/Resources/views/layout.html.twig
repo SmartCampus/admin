@@ -2,29 +2,22 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-      <!-- Bootstrap -->
-      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-      
-      <!-- Boite dialogue Jquery -->
-      <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
-      <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-      <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-      <link rel="stylesheet" href="/resources/demos/style.css">
-      <script>
-      $(function() {
-        $( "#dialog-message" ).dialog({
-          modal: true,
-          buttons: {
-            Ok: function() {
-              $( this ).dialog( "close" );
-            }
-          }
-        });
-      });
-      </script>
-      
-      <!-- Definition du titre generale -->
+    <link rel="stylesheet" href="../../Resources/public/css/style.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <!-- Boite dialogue Jquery -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css">
+
+    <script type="text/javascript" src="../../Resources/public/js/dialog.js"></script>
+    <script type="text/javascript" src="../../Resources/public/js/suppr.js"></script>
+
+    <!-- Definition du titre generale -->
     <title>{% block title %} SmartCampus {% endblock %}</title>
   </head>
   <body>

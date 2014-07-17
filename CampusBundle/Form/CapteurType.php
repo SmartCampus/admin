@@ -23,7 +23,7 @@ class CapteurType extends AbstractType
                     'presence' => 'Présence',
                 ),
             ))
-            ->add('Frequency',  'text');
+            ->add('Frequency',  'integer');
     }
     
     /**

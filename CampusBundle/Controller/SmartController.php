@@ -67,7 +67,6 @@ class SmartController extends Controller
                 //$response->headers->set('Content-Type', 'application/json');
                 //return $response; TODO : enregistrer le Json et l'envoyer a l'autre base
                 
-                
                 return $this->redirect($this->generateUrl('smartcampus_voir', array('id' => $cap->getId())));
             }
         }
@@ -103,7 +102,7 @@ class SmartController extends Controller
                 $em->persist($cap);
                 $em->flush();
 
-                $this->get('session')->getFlashBag()->add('info', 'Capteur bien modifié');
+                $this->get('session')->getFlashBag()->add('info', 'Modification enregistré avec succès');
 
             return $this->redirect($this->generateUrl('smartcampus_voir', array('id' => $cap->getId())));
           }
@@ -134,22 +133,18 @@ class SmartController extends Controller
         {
           $form->bind($request);
 
-          if ($form->isValid())
+          if ($form->isNotValid())
           {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($cap);
-            $em->flush();
-
-            $this->get('session')->getFlashBag()->add('info', 'Capteur bien supprimé');
-
-            return $this->redirect($this->generateUrl('smartcampus_accueil'));
+            throw $this->createNotFoundException('ERREUR : formulaire.');
+            
           }
         }
 
-        return $this->render('SmartCampusBundle:Smart:supp.html.twig', array(
-          'capteur' => $cap,
-          'form'    => $form->createView()
-        ));
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($cap);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('smartcampus_accueil'));
 	}
     
 //-----------------------------------------------------------------------------------------------------

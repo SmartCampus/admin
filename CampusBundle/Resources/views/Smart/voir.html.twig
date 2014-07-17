@@ -23,8 +23,12 @@
         Modifier
     </a>
 
-    <a href="{{ path('smartcampus_supprimer', {'id': capteur.id}) }}" class="btn btn btn-danger">
-        Supprimer
-    </a>
+    <input type="button" value="Supprimer" class="btn btn btn-danger" onclick="suppr('{{ path('smartcampus_supprimer', {'id': capteur.id}) }}')">
+
+    
+    <div id="supp-message" title="Suppression" style="visibility: hidden">            
+      <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+        <p>Voulez-vous vraiment supprimer ce capteur ?</p>
+    </div>
 	
 {% endblock %}
