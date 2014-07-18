@@ -5,15 +5,17 @@
 {% block body %}
     <h1>{{ titre }}</h1>
 
-    <!-- Zone filtre pour la recherche -->
-    {% include "SmartCampusBundle:Smart:filtre.html.twig" %}
-
-    <!-- Zone affichage de la recherche -->
-    {% include "SmartCampusBundle:Smart:recherche.html.twig" %}
-
     
-    <a href="{{ path('smartcampus_ajouter') }}" class="btn btn-primary" style="float:right;">
-        Ajouter
-    </a>
+    <div class="container">
+        <!-- Zone filtre pour la recherche -->
+        {% include "SmartCampusBundle:Smart:filtre.html.twig" %}
 
+        <!-- Zone affichage de la recherche -->
+        {% include "SmartCampusBundle:Smart:recherche.html.twig" %}
+
+
+        <a href="{{ path('smartcampus_ajouter') }}" class="btn btn-primary">
+            Ajouter
+        </a>
+    </div>
 {% endblock %}

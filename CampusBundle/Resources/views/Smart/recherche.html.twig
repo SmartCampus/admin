@@ -1,26 +1,28 @@
-<div class="panel panel-default">
-    <div class="panel-heading">Liste des capteurs</div>
-    <table class="table table-hover">
-        <tr>
-            <th>Name</th>
-            <th>Kind</th>
-            <th>Frequency</th>
-        </tr>
-        <!--{% set ret = capAll %}-->
-        {% for cap in capAll %}
-            {% if (tag == NULL) or (tag == "indiferent") or (cap.kind == tag) %}
-                <tr class="lien" style="cursor: pointer;" onclick="location.href='{{ path('smartcampus_voir', {'id': cap.id}) }}'">
-                    <td>
-                        {{ cap.name }}
-                    </td>
-                    <td>
-                        {{ cap.kind }}
-                    </td>
-                    <td>
-                        {{ cap.frequency }}
-                    </td>
-                </tr>
-            {% endif %}
-        {% endfor %}
-    </table>
+<div class="row">
+    <div class="panel panel-default">
+        <div id="tabaccueil" class="panel-heading">Liste des capteurs</div>
+        <table id="tabaccueil" class="table table-hover">
+            <tr>
+                <th>Name</th>
+                <th>Kind</th>
+                <th>Frequency</th>
+            </tr>
+            <!--{% set ret = capAll %}-->
+            {% for cap in capAll %}
+                {% if (tag == NULL) or (tag == "indiferent") or (cap.kind == tag) %}
+                    <tr class="lien" style="cursor: pointer;" onclick="location.href='{{ path('smartcampus_voir', {'id': cap.id}) }}'">
+                        <td>
+                            {{ cap.name }}
+                        </td>
+                        <td>
+                            {{ cap.kind }}
+                        </td>
+                        <td>
+                            {{ cap.frequency }}
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+    </div>
 </div>
