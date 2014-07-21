@@ -20,7 +20,6 @@ class CapteurType extends AbstractType
                 'choices' => array(
                     'temperature' => 'Température',
                     'light' => 'Light',
-                    'presence' => 'Présence',
                 ),
             ))
             ->add('Frequency',  'integer');
