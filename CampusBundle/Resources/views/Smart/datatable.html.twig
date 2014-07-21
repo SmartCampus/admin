@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="panel panel-default">
+        <div id="tabaccueil" class="panel-heading">Liste des capteurs</div>
+        <br>
+        <table id="tablerecherche" class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Kind</th>
+                    <th>Frequency</th>
+                </tr>
+            </thead>
+            
+            <!--<tfoot>
+                <tr>
+                    <th>Name</th>
+                    <th>Kind</th>
+                    <th>Frequency</th>
+                </tr>
+            </tfoot>-->
+            
+            <tbody>
+                <!--{% set ret = capAll %}-->
+                {% for cap in capAll %}
+                    <tr class="lien" style="cursor: pointer;" onclick="location.href='{{ path('smartcampus_voir', {'id': cap.id}) }}';">
+                        <td>
+                            {{ cap.name }}
+                        </td>
+                        <td>
+                            {{ cap.kind }}
+                        </td>
+                        <td>
+                            {{ cap.frequency }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

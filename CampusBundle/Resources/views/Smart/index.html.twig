@@ -7,12 +7,9 @@
 
     
     <div class="container">
-        <!-- Zone filtre pour la recherche -->
-        {% include "SmartCampusBundle:Smart:filtre.html.twig" %}
-
-        <!-- Zone affichage de la recherche -->
-        {% include "SmartCampusBundle:Smart:recherche.html.twig" %}
-
+        
+        <!-- DataTable -->
+        {% include "SmartCampusBundle:Smart:datatable.html.twig" %}
 
         <a href="{{ path('smartcampus_ajouter') }}" class="btn btn-primary">
             Ajouter
