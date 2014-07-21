@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>{% block title %}SmartCampus{% endblock %}</title>
+
+    {% block javascripts %}
+      <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+      <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+      
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+      
+      <script src="//cdn.datatables.net/1.10.1/js/jquery.dataTables.min.js"></script>
+      
+      <script type="text/javascript" src="{{ asset('js/suppr.js') }}"></script>
+      <script type="text/javascript" src="{{ asset('js/dialog.js') }}"></script>
+      <script type="text/javascript" src="{{ asset('js/tri.js') }}"></script>
+    {% endblock %}
+      
+    {% block stylesheets %}
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+      
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+      <link rel="stylesheet" href="//cdn.datatables.net/plug-ins/be7019ee387/integration/jqueryui/dataTables.jqueryui.css">
+      
+      <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css" />
+    {% endblock %}
+      
+  </head>
+
+  <body>
+      {% block body %}
+        
+      {% endblock %}
+  </body>
+</html> 

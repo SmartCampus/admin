@@ -1,0 +1,4 @@
+smart_campus:
+    resource: "@SmartCampusBundle/Resources/config/routing.yml"
+    prefix:   /smartcampus
+
