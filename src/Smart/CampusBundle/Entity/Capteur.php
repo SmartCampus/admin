@@ -8,8 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Capteur
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="Smart\CampusBundle\Entity\CapteurRepository")
+ * @ORM\MappedSuperclass
  */
 class Capteur
 {
