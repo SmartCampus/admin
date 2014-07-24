@@ -4,12 +4,15 @@ namespace Smart\CampusBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Physique
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Smart\CampusBundle\Entity\PhysiqueRepository")
+ * @UniqueEntity("board")
+ * @UniqueEntity("endpoint")
  */
 class Physique extends Capteur
 {
@@ -27,16 +30,6 @@ class Physique extends Capteur
      */
     private $endpoint;
 
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set board

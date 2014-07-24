@@ -26,6 +26,7 @@ class Endpoint
      * @var string
      *
      * @ORM\Column(name="ip", type="string", length=255)
+     * @Assert\Regex(pattern= "/([0-9]{1,3}.){3}[0-9]{1,3}/")
      */
     private $ip;
 
@@ -33,6 +34,7 @@ class Endpoint
      * @var string
      *
      * @ORM\Column(name="port", type="string", length=255)
+     * @Assert\Regex(pattern= "/(\d*)/")
      */
     private $port;
 

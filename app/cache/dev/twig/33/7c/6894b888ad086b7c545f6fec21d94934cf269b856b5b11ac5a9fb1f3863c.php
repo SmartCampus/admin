@@ -64,24 +64,32 @@ class __TwigTemplate_337c6894b888ad086b7c545f6fec21d94934cf269b856b5b11ac5a9fb1f
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["capteur"]) ? $context["capteur"] : $this->getContext($context, "capteur")), "frequency"), "html", null, true);
         echo "</div>
             </div>
+            <br>
+            <div class=\"row\">
+                <div class=\"col-md-2\">Script :</div>
+                <div class=\"col-md-2\">";
+        // line 28
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["capteur"]) ? $context["capteur"] : $this->getContext($context, "capteur")), "script"), "html", null, true);
+        echo "</div>
+            </div>
         </div>
 
         <a href=\"";
-        // line 27
+        // line 32
         echo $this->env->getExtension('routing')->getPath("smartcampus_accueil");
         echo "\" class=\"btn\">
             Retour à l'accueil
         </a>
 
         <a href=\"";
-        // line 31
+        // line 36
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("smartcampus_modifier", array("id" => $this->getAttribute((isset($context["capteur"]) ? $context["capteur"] : $this->getContext($context, "capteur")), "id"))), "html", null, true);
         echo "\" class=\"btn btn-primary\">
             Modifier
         </a>
 
         <input type=\"button\" value=\"Supprimer\" class=\"btn btn btn-danger\" onclick=\"suppr('";
-        // line 35
+        // line 40
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("smartcampus_supprimer", array("id" => $this->getAttribute((isset($context["capteur"]) ? $context["capteur"] : $this->getContext($context, "capteur")), "id"))), "html", null, true);
         echo "');\">
 
@@ -93,9 +101,9 @@ class __TwigTemplate_337c6894b888ad086b7c545f6fec21d94934cf269b856b5b11ac5a9fb1f
 \t
     <!-- Boite dialogue Modification capteur -->
     ";
-        // line 44
+        // line 49
         $this->env->loadTemplate("SmartCampusBundle:Smart:dialogue.html.twig")->display($context);
-        // line 45
+        // line 50
         echo "
 ";
     }
@@ -112,6 +120,6 @@ class __TwigTemplate_337c6894b888ad086b7c545f6fec21d94934cf269b856b5b11ac5a9fb1f
 
     public function getDebugInfo()
     {
-        return array (  99 => 45,  97 => 44,  85 => 35,  78 => 31,  71 => 27,  64 => 23,  56 => 18,  48 => 13,  39 => 6,  36 => 5,  29 => 3,);
+        return array (  107 => 50,  105 => 49,  93 => 40,  86 => 36,  79 => 32,  72 => 28,  64 => 23,  56 => 18,  48 => 13,  39 => 6,  36 => 5,  29 => 3,);
     }
 }

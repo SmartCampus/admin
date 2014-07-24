@@ -51,9 +51,16 @@ class __TwigTemplate_418116ea6a32a0db89513854f09bf5e9037676f31d92565e65dcb5c3ac2
         echo "
         <a href=\"";
         // line 14
-        echo $this->env->getExtension('routing')->getPath("smartcampus_ajouter");
+        echo $this->env->getExtension('routing')->getPath("smartcampus_ajouterV");
         echo "\" class=\"btn btn-primary\">
-            Ajouter
+            + Capteur Virtuel
+        </a>
+        <br><br>
+        <a href=\"";
+        // line 18
+        echo $this->env->getExtension('routing')->getPath("smartcampus_ajouterP");
+        echo "\" class=\"btn btn-primary\">
+            + Capteur Physique
         </a>
     </div>
 ";
@@ -71,6 +78,6 @@ class __TwigTemplate_418116ea6a32a0db89513854f09bf5e9037676f31d92565e65dcb5c3ac2
 
     public function getDebugInfo()
     {
-        return array (  54 => 14,  51 => 13,  49 => 12,  39 => 6,  36 => 5,  29 => 3,);
+        return array (  61 => 18,  54 => 14,  51 => 13,  49 => 12,  39 => 6,  36 => 5,  29 => 3,);
     }
 }

@@ -7,21 +7,15 @@
                     <th>Name</th>
                     <th>Kind</th>
                     <th>Frequency</th>
+                    <th>Script</th>
+                    <th>Board</th>
+                    <th>Endpoint</th>
                 </tr>
             </thead>
             
-            <!--<tfoot>
-                <tr>
-                    <th>Name</th>
-                    <th>Kind</th>
-                    <th>Frequency</th>
-                </tr>
-            </tfoot>-->
-            
             <tbody>
-                <!--{% set ret = capAll %}-->
-                {% for cap in capAll %}
-                    <tr class="lien" style="cursor: pointer;" onclick="location.href='{{ path('smartcampus_voir', {'id': cap.id}) }}';">
+                {% for cap in virAll %}
+                    <tr class="lien" style="cursor: pointer;" onclick="location.href='{{ path('smartcampus_voirV', {'id': cap.id}) }}';">
                         <td>
                             {{ cap.name }}
                         </td>
@@ -30,6 +24,37 @@
                         </td>
                         <td>
                             {{ cap.frequency }}
+                        </td>
+                        <td>
+                            {{ cap.script }}
+                        </td>
+                        <td>
+                            ~<!--vide-->
+                        </td>
+                        <td>
+                            ~<!--vide-->
+                        </td>
+                    </tr>
+                {% endfor %}
+                {% for cap in phyAll %}
+                    <tr class="lien" style="cursor: pointer;" onclick="location.href='{{ path('smartcampus_voirP', {'id': cap.id}) }}';">
+                        <td>
+                            {{ cap.name }}
+                        </td>
+                        <td>
+                            {{ cap.kind }}
+                        </td>
+                        <td>
+                            {{ cap.frequency }}
+                        </td>
+                        <td>
+                            ~<!--vide-->
+                        </td>
+                        <td>
+                            {{ cap.board.name }} [{{ cap.board.pin }}]
+                        </td>
+                        <td>
+                            {{ cap.endpoint.ip }}:{{ cap.endpoint.port }}
                         </td>
                     </tr>
                 {% endfor %}

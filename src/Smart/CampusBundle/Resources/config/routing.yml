@@ -2,20 +2,35 @@ smartcampus_accueil:
     path:  /
     defaults: { _controller: SmartCampusBundle:Smart:index }
 
-smartcampus_voir:
-    path:  /capteur/{id}
-    defaults: { _controller: SmartCampusBundle:Smart:voir, format: html }
+smartcampus_voirV:
+    path:  /virtuel/{id}
+    defaults: { _controller: SmartCampusBundle:Smart:voirV }
     requirements :
         id: \d+
-        format: html|xml
 
-smartcampus_ajouter:
-    path:  /ajouter
-    defaults: { _controller: SmartCampusBundle:Smart:ajouter }
+smartcampus_voirP:
+    path:  /physique/{id}
+    defaults: { _controller: SmartCampusBundle:Smart:voirP }
+    requirements :
+        id: \d+
 
-smartcampus_modifier:
-    path:  /modifier/{id}
-    defaults: { _controller: SmartCampusBundle:Smart:modifier }
+smartcampus_ajouterV:
+    path:  /ajouterV
+    defaults: { _controller: SmartCampusBundle:Smart:ajouterV }
+    
+smartcampus_ajouterP:
+    path:  /ajouterP
+    defaults: { _controller: SmartCampusBundle:Smart:ajouterP }
+
+smartcampus_modifierV:
+    path:  /modifierV/{id}
+    defaults: { _controller: SmartCampusBundle:Smart:modifierV }
+    requirements:
+        id: \d+
+        
+smartcampus_modifierP:
+    path:  /modifierP/{id}
+    defaults: { _controller: SmartCampusBundle:Smart:modifierP }
     requirements:
         id: \d+
 

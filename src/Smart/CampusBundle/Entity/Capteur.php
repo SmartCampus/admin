@@ -4,11 +4,13 @@ namespace Smart\CampusBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Capteur
  *
- * @ORM\MappedSuperclass
+ * @ORM\MappedSuperclass(repositoryClass="Smart\CampusBundle\Entity\PhysiqueRepository")
+ * @UniqueEntity("name")
  */
 class Capteur
 {
@@ -25,7 +27,7 @@ class Capteur
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
-     * @Assert\NotBlank()
+     * @Assert\Regex(pattern= "/[A-Z]{4,5}_[0-9]{3}V?/")
      */
     private $name;
 

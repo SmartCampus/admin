@@ -26,6 +26,7 @@ class Board
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\Regex(pattern= "/ARD_[0-9]*_[0-9]{3}/")
      */
     private $name;
 

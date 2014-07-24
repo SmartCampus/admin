@@ -44,7 +44,7 @@ class __TwigTemplate_bcec26e8c31664a87da0f306510d2f2e2e0ccef953601047ceba7635d0d
 
     ";
         // line 9
-        $this->env->loadTemplate("SmartCampusBundle:Smart:formulaire.html.twig")->display($context);
+        $this->env->loadTemplate("SmartCampusBundle:Smart:formulaireEdit.html.twig")->display($context);
         // line 10
         echo "\t
     <a href=\"";

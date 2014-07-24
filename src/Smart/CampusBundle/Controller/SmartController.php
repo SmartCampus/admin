@@ -6,31 +6,41 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
 use Smart\CampusBundle\Entity\Capteur;
-use Smart\CampusBundle\Form\CapteurType;
+use Smart\CampusBundle\Entity\Virtuel;
+use Smart\CampusBundle\Form\VirtuelType;
+use Smart\CampusBundle\Form\VirtuelEditType;
+use Smart\CampusBundle\Entity\Physique;
+use Smart\CampusBundle\Form\PhysiqueType;
+use Smart\CampusBundle\Form\PhysiqueEditType;
+use Smart\CampusBundle\Entity\Board;
+use Smart\CampusBundle\Form\BoardType;
+use Smart\CampusBundle\Entity\Endpoint;
+use Smart\CampusBundle\Form\EndpointType;
 
 /** Controller du SmartCampus */
 class SmartController extends Controller
 {
     /** Index du SmartCampus */
     public function indexAction()
-    {
-        $tag = $this->getRequest()->query->get('kind');
-        
-        $capAll = $this->getDoctrine()
-                ->getRepository('SmartCampusBundle:Capteur')
+    {        
+        $virAll = $this->getDoctrine()
+                ->getRepository('SmartCampusBundle:Virtuel')
                 ->findAll();
         
-        return $this->render('SmartCampusBundle:Smart:index.html.twig', array('cmp' => count($capAll), 'capAll' => $capAll, 'tag' => $tag));
+        $phyAll = $this->getDoctrine()
+                ->getRepository('SmartCampusBundle:Physique')
+                ->findAll();
+        
+        return $this->render('SmartCampusBundle:Smart:index.html.twig', array('virAll' => $virAll, 'phyAll' => $phyAll));
     }
 
 //-----------------------------------------------------------------------------------------------------
     
-    /** Afiche un capteur en particulier */
-	public function voirAction($id)
+    /** Afiche un capteur Virtuel */
+	public function voirVAction($id)
 	{
-        
         $cap = $this->getDoctrine()
-                ->getRepository('SmartCampusBundle:Capteur')
+                ->getRepository('SmartCampusBundle:Virtuel')
                 ->find($id);
 
         if($cap === null)
@@ -38,19 +48,31 @@ class SmartController extends Controller
             throw $this->createNotFoundException('Capteur[id='.$id.'] inexistant.');
         }
         
-        return $this->render('SmartCampusBundle:Smart:voir.html.twig', array('capteur' => $cap));
+        return $this->render('SmartCampusBundle:Smart:voirV.html.twig', array('capteur' => $cap));
+	}
+    
+    /** Afiche un Physique */
+    public function voirPAction($id)
+	{
+        $cap = $this->getDoctrine()
+                ->getRepository('SmartCampusBundle:Physique')
+                ->find($id);
+
+        if($cap === null)
+        {
+            throw $this->createNotFoundException('Capteur[id='.$id.'] inexistant.');
+        }
         
-        //P-B : Afficher un message sans page et avec un tag:
-		//return new Response("Affichage du capteur : ".$id." avec le type : ".$tag);
+        return $this->render('SmartCampusBundle:Smart:voirP.html.twig', array('capteur' => $cap));
 	}
 	
 //-----------------------------------------------------------------------------------------------------
     
-    /** Ajouter un capteur a la BD */
-	public function ajouterAction()
+    /** Ajouter un capteur Virtuel a la BD */
+	public function ajouterVAction()
 	{		
-        $cap = new Capteur();
-        $form = $this->createForm(new CapteurType, $cap);
+        $vir = new Virtuel();
+        $form = $this->createForm(new VirtuelType, $vir);
         
         $request = $this->get('request');
         if($request->getMethod() == 'POST'){
@@ -58,37 +80,53 @@ class SmartController extends Controller
             
             if($form->isValid()){
                 $em = $this->getDoctrine()->getManager();
-                $em->persist($cap);
+                $em->persist($vir);
                 $em->flush();
                 
-                //P-B : Generer du JSON :
-                //$id = 9;
-                //$response = new Response(json_encode(array('id' => $id)));
-                //$response->headers->set('Content-Type', 'application/json');
-                //return $response; TODO : enregistrer le Json et l'envoyer a l'autre base
-                
-                return $this->redirect($this->generateUrl('smartcampus_voir', array('id' => $cap->getId())));
+                return $this->redirect($this->generateUrl('smartcampus_voirV', array('id' => $vir->getId())));
             }
         }
         
-        return $this->render('SmartCampusBundle:Smart:ajout.html.twig', array('form' => $form->createView(),));
+        return $this->render('SmartCampusBundle:Smart:ajoutV.html.twig', array('form' => $form->createView(),));
+	}
+    
+    /** Ajouter un capteur Physique a la BD */
+    public function ajouterPAction()
+	{		
+        $phy = new Physique();
+        $form = $this->createForm(new PhysiqueType, $phy);
+        
+        $request = $this->get('request');
+        if($request->getMethod() == 'POST'){
+            $form->bind($request);
+            
+            if($form->isValid()){
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($phy);
+                $em->flush();
+                
+                return $this->redirect($this->generateUrl('smartcampus_voirP', array('id' => $phy->getId())));
+            }
+        }
+        
+        return $this->render('SmartCampusBundle:Smart:ajoutP.html.twig', array('form' => $form->createView(),));
 	}
 	
 //-----------------------------------------------------------------------------------------------------
     
-    /** Modifier les infos d'un capteur */
-	public function modifierAction($id)
+    /** Modifier les infos d'un capteur Virtuel */
+	public function modifierVAction($id)
 	{
-        $cap = $this->getDoctrine()
-                ->getRepository('SmartCampusBundle:Capteur')
+        $vir = $this->getDoctrine()
+                ->getRepository('SmartCampusBundle:Virtuel')
                 ->find($id);
         
-        if($cap === null)
+        if($vir === null)
         {
             throw $this->createNotFoundException('Capteur[id='.$id.'] inexistant.');
         }
         
-        $form = $this->createForm(new CapteurType, $cap);
+        $form = $this->createForm(new VirtuelEditType, $vir);
         
         $request = $this->getRequest();
 
@@ -99,16 +137,51 @@ class SmartController extends Controller
             if ($form->isValid())
             {
                 $em = $this->getDoctrine()->getManager();
-                $em->persist($cap);
+                $em->persist($vir);
                 $em->flush();
 
                 $this->get('session')->getFlashBag()->add('info', 'Modification enregistré avec succès');
 
-            return $this->redirect($this->generateUrl('smartcampus_voir', array('id' => $cap->getId())));
+            return $this->redirect($this->generateUrl('smartcampus_voirV', array('id' => $vir->getId())));
           }
         }
         
-        return $this->render('SmartCampusBundle:Smart:modif.html.twig', array('form' => $form->createView(), 'capteur'=>$cap,));
+        return $this->render('SmartCampusBundle:Smart:modifV.html.twig', array('form' => $form->createView(), 'capteur'=>$vir,));
+	}
+    
+    /** Modifier les infos d'un capteur Physique */
+	public function modifierPAction($id)
+	{
+        $phy = $this->getDoctrine()
+                ->getRepository('SmartCampusBundle:Physique')
+                ->find($id);
+        
+        if($phy === null)
+        {
+            throw $this->createNotFoundException('Capteur[id='.$id.'] inexistant.');
+        }
+        
+        $form = $this->createForm(new PhysiqueEditType, $phy);
+        
+        $request = $this->getRequest();
+
+        if ($request->getMethod() == 'POST')
+        {
+            $form->bind($request);
+
+            if ($form->isValid())
+            {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($phy);
+                $em->flush();
+
+                $this->get('session')->getFlashBag()->add('info', 'Modification enregistré avec succès');
+
+            return $this->redirect($this->generateUrl('smartcampus_voirP', array('id' => $phy->getId())));
+          }
+        }
+        
+        return $this->render('SmartCampusBundle:Smart:modifP.html.twig', array('form' => $form->createView(), 'capteur'=>$phy,));
 	}
 	
 //-----------------------------------------------------------------------------------------------------
@@ -118,7 +191,7 @@ class SmartController extends Controller
 	{
         
         $cap = $this->getDoctrine()
-                ->getRepository('SmartCampusBundle:Capteur')
+                ->getRepository('SmartCampusBundle:Virtuel')
                 ->find($id);
         
         if($cap === null)
@@ -146,18 +219,10 @@ class SmartController extends Controller
 
         return $this->redirect($this->generateUrl('smartcampus_accueil'));
 	}
-    
-//-----------------------------------------------------------------------------------------------------
-    
-    /** Redirige sur la page triee */
-	public function redirectAction()
-	{
-        $kind = $_POST['kind'];
-        
-        /*return new Response("kind : ".$kind);*/
-        
-        /*return $this->redirect($this->generateUrl('smartcampus_accueil', array('kind' => $kind));*/
-        
-        return $this->render('SmartCampusBundle:Smart:redirect.html.twig', array('kind' => $kind));
-	}
 }
+
+//P-B : Generer du JSON :
+//$id = 9;
+//$response = new Response(json_encode(array('id' => $id)));
+//$response->headers->set('Content-Type', 'application/json');
+//return $response; TODO : enregistrer le Json et l'envoyer a l'autre base

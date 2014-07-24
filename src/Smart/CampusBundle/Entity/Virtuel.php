@@ -22,16 +22,6 @@ class Virtuel extends Capteur
 
 
     /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
      * Set script
      *
      * @param string $script
