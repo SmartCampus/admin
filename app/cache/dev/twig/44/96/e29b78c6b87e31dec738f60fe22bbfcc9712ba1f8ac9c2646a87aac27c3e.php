@@ -112,9 +112,38 @@ class __TwigTemplate_4496e29b78c6b87e31dec738f60fe22bbfcc9712ba1f8ac9c2646a87aac
           </div>
       </form>
     </div>
-\t
+\t<script>
+        \$(function () {
+            \$('textarea').each(function () {
+                var textarea = \$(this);
+
+                var mode = \"java\";
+
+                var editDiv = \$('<div>', {
+                    position: 'absolute',
+                    width: textarea.width()*5,
+                    height: textarea.height()*3,
+                    'id':\"editor\",
+                    'class': \"form-group\" /*textarea.attr('class')*/
+                }).insertBefore(textarea);
+
+                textarea.css('visibility', 'hidden');
+
+                var editor = ace.edit(editDiv[0]);
+                editor.renderer.setShowGutter(false);
+                editor.getSession().setValue(textarea.val());
+                editor.getSession().setMode(\"ace/mode/\" + mode);
+                editor.setTheme(\"ace/theme/idle_fingers\");
+
+                // copy back to textarea on form submit...
+                textarea.closest('form').submit(function () {
+                    textarea.val(editor.getSession().getValue());
+                })
+            });
+        });
+      </script>
     <a href=\"";
-        // line 41
+        // line 70
         echo $this->env->getExtension('routing')->getPath("smartcampus_accueil");
         echo "\" class=\"btn\">
         Retour à l'accueil
@@ -135,6 +164,6 @@ class __TwigTemplate_4496e29b78c6b87e31dec738f60fe22bbfcc9712ba1f8ac9c2646a87aac
 
     public function getDebugInfo()
     {
-        return array (  118 => 41,  107 => 33,  101 => 30,  97 => 29,  93 => 28,  87 => 25,  83 => 24,  79 => 23,  73 => 20,  69 => 19,  65 => 18,  59 => 15,  55 => 14,  51 => 13,  46 => 11,  39 => 6,  36 => 5,  29 => 3,);
+        return array (  147 => 70,  107 => 33,  101 => 30,  97 => 29,  93 => 28,  87 => 25,  83 => 24,  79 => 23,  73 => 20,  69 => 19,  65 => 18,  59 => 15,  55 => 14,  51 => 13,  46 => 11,  39 => 6,  36 => 5,  29 => 3,);
     }
 }

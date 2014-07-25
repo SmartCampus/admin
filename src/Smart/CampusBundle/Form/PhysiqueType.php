@@ -24,6 +24,7 @@ class PhysiqueType extends AbstractType
             ))
             ->add('frequency',  'integer')
             ->add('board',      new BoardType())
+            ->add('pin',    'integer')
             ->add('endpoint',   new EndpointType());
         ;
     }

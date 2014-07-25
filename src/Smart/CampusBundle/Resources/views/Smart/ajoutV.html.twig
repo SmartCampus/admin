@@ -29,6 +29,36 @@
               <div class="col-md-2">{{ form_widget(form.script) }}</div>
               <div class="col-md-3">{{ form_errors(form.script) }}</div>
           </div>
+          <script>
+            $(function () {
+                $('textarea').each(function () {
+                    var textarea = $(this);
+
+                    var mode = "java";
+
+                    var editDiv = $('<div>', {
+                        position: 'absolute',
+                        width: textarea.width()*5,
+                        height: textarea.height()*3,
+                        'id':"editor",
+                        'class': "form-group" /*textarea.attr('class')*/
+                    }).insertBefore(textarea);
+
+                    /*textarea.css('visibility', 'hidden');*/
+
+                    var editor = ace.edit(editDiv[0]);
+                    editor.renderer.setShowGutter(false);
+                    editor.getSession().setValue(textarea.val());
+                    editor.getSession().setMode("ace/mode/" + mode);
+                    editor.setTheme("ace/theme/idle_fingers");
+
+                    // copy back to textarea on form submit...
+                    textarea.closest('form').submit(function () {
+                        textarea.val(editor.getSession().getValue());
+                    })
+                });
+            });
+          </script>
           <div class="form-group">
               {{ form_rest(form) }}
           </div>

@@ -31,14 +31,6 @@ class Board
     private $name;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="pin", type="integer")
-     */
-    private $pin;
-
-
-    /**
      * Get id
      *
      * @return integer 
@@ -69,28 +61,5 @@ class Board
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set pin
-     *
-     * @param integer $pin
-     * @return Board
-     */
-    public function setPin($pin)
-    {
-        $this->pin = $pin;
-
-        return $this;
-    }
-
-    /**
-     * Get pin
-     *
-     * @return integer 
-     */
-    public function getPin()
-    {
-        return $this->pin;
     }
 }

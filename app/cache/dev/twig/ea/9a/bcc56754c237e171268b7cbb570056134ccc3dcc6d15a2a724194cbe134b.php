@@ -33,20 +33,20 @@ class __TwigTemplate_ea9abcc56754c237e171268b7cbb570056134ccc3dcc6d15a2a724194cb
     ";
         // line 8
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 20
+        // line 22
         echo "      
     ";
-        // line 21
+        // line 23
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 30
+        // line 32
         echo "      
   </head>
 
   <body>
       ";
-        // line 34
+        // line 36
         $this->displayBlock('body', $context, $blocks);
-        // line 37
+        // line 39
         echo "  </body>
 </html> ";
     }
@@ -68,25 +68,27 @@ class __TwigTemplate_ea9abcc56754c237e171268b7cbb570056134ccc3dcc6d15a2a724194cb
       
       <script src=\"//cdn.datatables.net/1.10.1/js/jquery.dataTables.min.js\"></script>
       
+      <script src=\"//d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js\"></script>
+      
       <script type=\"text/javascript\" src=\"";
-        // line 16
+        // line 18
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/suppr.js"), "html", null, true);
         echo "\"></script>
       <script type=\"text/javascript\" src=\"";
-        // line 17
+        // line 19
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/dialog.js"), "html", null, true);
         echo "\"></script>
       <script type=\"text/javascript\" src=\"";
-        // line 18
+        // line 20
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/tri.js"), "html", null, true);
         echo "\"></script>
     ";
     }
 
-    // line 21
+    // line 23
     public function block_stylesheets($context, array $blocks = array())
     {
-        // line 22
+        // line 24
         echo "      <link rel=\"stylesheet\" href=\"//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css\">
       <link rel=\"stylesheet\" href=\"//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css\">
       
@@ -94,16 +96,16 @@ class __TwigTemplate_ea9abcc56754c237e171268b7cbb570056134ccc3dcc6d15a2a724194cb
       <link rel=\"stylesheet\" href=\"//cdn.datatables.net/plug-ins/be7019ee387/integration/jqueryui/dataTables.jqueryui.css\">
       
       <link rel=\"stylesheet\" href=\"";
-        // line 28
+        // line 30
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/style.css"), "html", null, true);
         echo "\" type=\"text/css\" />
     ";
     }
 
-    // line 34
+    // line 36
     public function block_body($context, array $blocks = array())
     {
-        // line 35
+        // line 37
         echo "        
       ";
     }
@@ -115,6 +117,6 @@ class __TwigTemplate_ea9abcc56754c237e171268b7cbb570056134ccc3dcc6d15a2a724194cb
 
     public function getDebugInfo()
     {
-        return array (  107 => 35,  104 => 34,  98 => 28,  90 => 22,  87 => 21,  81 => 18,  77 => 17,  73 => 16,  64 => 9,  61 => 8,  55 => 6,  50 => 37,  48 => 34,  42 => 30,  40 => 21,  37 => 20,  35 => 8,  30 => 6,  23 => 1,);
+        return array (  109 => 37,  106 => 36,  100 => 30,  92 => 24,  89 => 23,  75 => 18,  64 => 9,  61 => 8,  50 => 39,  48 => 36,  42 => 32,  40 => 23,  37 => 22,  35 => 8,  30 => 6,  23 => 1,  149 => 72,  138 => 64,  101 => 30,  97 => 29,  93 => 28,  87 => 25,  83 => 20,  79 => 19,  73 => 20,  69 => 19,  65 => 18,  59 => 15,  55 => 6,  51 => 13,  46 => 11,  39 => 6,  36 => 5,  29 => 3,);
     }
 }

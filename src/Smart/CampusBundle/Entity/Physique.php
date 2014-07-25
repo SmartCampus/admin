@@ -24,6 +24,13 @@ class Physique extends Capteur
     private $board;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="pin", type="integer")
+     */
+    private $pin;
+    
+    /**
      * @var \stdClass
      *
      * @ORM\Column(name="endpoint", type="object")
@@ -54,6 +61,29 @@ class Physique extends Capteur
         return $this->board;
     }
 
+    /**
+     * Set pin
+     *
+     * @param integer $pin
+     * @return Board
+     */
+    public function setPin($pin)
+    {
+        $this->pin = $pin;
+
+        return $this;
+    }
+
+    /**
+     * Get pin
+     *
+     * @return integer 
+     */
+    public function getPin()
+    {
+        return $this->pin;
+    }
+    
     /**
      * Set endpoint
      *
