@@ -43,6 +43,7 @@ class Capteur
      *
      * @ORM\Column(name="frequency", type="integer")
      * @Assert\Type(type="integer")
+     * @Assert\Range(min=0)
      */
     private $frequency;
 

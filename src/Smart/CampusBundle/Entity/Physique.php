@@ -27,6 +27,7 @@ class Physique extends Capteur
      * @var integer
      *
      * @ORM\Column(name="pin", type="integer")
+     * @Assert\Range(min=0)
      */
     private $pin;
     

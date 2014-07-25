@@ -74,7 +74,7 @@ class __TwigTemplate_3f249722d70960e16664b11a8841e793d0b25041a6d709789fc0efd12ec
         // line 28
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["capteur"]) ? $context["capteur"] : $this->getContext($context, "capteur")), "board"), "name"), "html", null, true);
         echo " [";
-        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["capteur"]) ? $context["capteur"] : $this->getContext($context, "capteur")), "board"), "pin"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["capteur"]) ? $context["capteur"] : $this->getContext($context, "capteur")), "pin"), "html", null, true);
         echo "]</div>
             </div>
             <br>

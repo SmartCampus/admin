@@ -156,6 +156,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             if (0 === strpos($pathinfo, '/smartcampus/ajouter')) {
+                // smartcampus_ajouterB
+                if ($pathinfo === '/smartcampus/ajouterB') {
+                    return array (  '_controller' => 'Smart\\CampusBundle\\Controller\\SmartController::ajouterBAction',  '_route' => 'smartcampus_ajouterB',);
+                }
+
                 // smartcampus_ajouterV
                 if ($pathinfo === '/smartcampus/ajouterV') {
                     return array (  '_controller' => 'Smart\\CampusBundle\\Controller\\SmartController::ajouterVAction',  '_route' => 'smartcampus_ajouterV',);

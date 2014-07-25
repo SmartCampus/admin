@@ -112,7 +112,7 @@ class __TwigTemplate_715b67d8722fb1b5737e5a78f7c7bed34a0f9621ed6d244a89f8f3b4e6b
             // line 54
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["cap"]) ? $context["cap"] : $this->getContext($context, "cap")), "board"), "name"), "html", null, true);
             echo " [";
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["cap"]) ? $context["cap"] : $this->getContext($context, "cap")), "board"), "pin"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["cap"]) ? $context["cap"] : $this->getContext($context, "cap")), "pin"), "html", null, true);
             echo "]
                         </td>
                         <td>

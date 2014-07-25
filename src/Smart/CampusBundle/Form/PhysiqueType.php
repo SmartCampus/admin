@@ -24,6 +24,11 @@ class PhysiqueType extends AbstractType
             ))
             ->add('frequency',  'integer')
             ->add('board',      new BoardType())
+            ->add('board',       'entity', array(
+                'class' => 'SmartCampusBundle:Board',
+                'property' => 'name',
+                'multiple' => true)
+            )
             ->add('pin',    'integer')
             ->add('endpoint',   new EndpointType());
         ;

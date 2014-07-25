@@ -101,9 +101,39 @@ class __TwigTemplate_4496e29b78c6b87e31dec738f60fe22bbfcc9712ba1f8ac9c2646a87aac
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "script"), 'errors');
         echo "</div>
           </div>
+          <script>
+            \$(function () {
+                \$('textarea').each(function () {
+                    var textarea = \$(this);
+
+                    var mode = \"java\";
+
+                    var editDiv = \$('<div>', {
+                        position: 'absolute',
+                        width: textarea.width()*5,
+                        height: textarea.height()*3,
+                        'id':\"editor\",
+                        'class': \"form-group\" /*textarea.attr('class')*/
+                    }).insertBefore(textarea);
+
+                    /*textarea.css('visibility', 'hidden');*/
+
+                    var editor = ace.edit(editDiv[0]);
+                    editor.renderer.setShowGutter(false);
+                    editor.getSession().setValue(textarea.val());
+                    editor.getSession().setMode(\"ace/mode/\" + mode);
+                    editor.setTheme(\"ace/theme/idle_fingers\");
+
+                    // copy back to textarea on form submit...
+                    textarea.closest('form').submit(function () {
+                        textarea.val(editor.getSession().getValue());
+                    })
+                });
+            });
+          </script>
           <div class=\"form-group\">
               ";
-        // line 33
+        // line 63
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'rest');
         echo "
           </div>
@@ -112,38 +142,9 @@ class __TwigTemplate_4496e29b78c6b87e31dec738f60fe22bbfcc9712ba1f8ac9c2646a87aac
           </div>
       </form>
     </div>
-\t<script>
-        \$(function () {
-            \$('textarea').each(function () {
-                var textarea = \$(this);
-
-                var mode = \"java\";
-
-                var editDiv = \$('<div>', {
-                    position: 'absolute',
-                    width: textarea.width()*5,
-                    height: textarea.height()*3,
-                    'id':\"editor\",
-                    'class': \"form-group\" /*textarea.attr('class')*/
-                }).insertBefore(textarea);
-
-                textarea.css('visibility', 'hidden');
-
-                var editor = ace.edit(editDiv[0]);
-                editor.renderer.setShowGutter(false);
-                editor.getSession().setValue(textarea.val());
-                editor.getSession().setMode(\"ace/mode/\" + mode);
-                editor.setTheme(\"ace/theme/idle_fingers\");
-
-                // copy back to textarea on form submit...
-                textarea.closest('form').submit(function () {
-                    textarea.val(editor.getSession().getValue());
-                })
-            });
-        });
-      </script>
+\t
     <a href=\"";
-        // line 70
+        // line 71
         echo $this->env->getExtension('routing')->getPath("smartcampus_accueil");
         echo "\" class=\"btn\">
         Retour à l'accueil
@@ -164,6 +165,6 @@ class __TwigTemplate_4496e29b78c6b87e31dec738f60fe22bbfcc9712ba1f8ac9c2646a87aac
 
     public function getDebugInfo()
     {
-        return array (  147 => 70,  107 => 33,  101 => 30,  97 => 29,  93 => 28,  87 => 25,  83 => 24,  79 => 23,  73 => 20,  69 => 19,  65 => 18,  59 => 15,  55 => 14,  51 => 13,  46 => 11,  39 => 6,  36 => 5,  29 => 3,);
+        return array (  148 => 71,  137 => 63,  101 => 30,  97 => 29,  93 => 28,  87 => 25,  83 => 24,  79 => 23,  73 => 20,  69 => 19,  65 => 18,  59 => 15,  55 => 14,  51 => 13,  46 => 11,  39 => 6,  36 => 5,  29 => 3,);
     }
 }

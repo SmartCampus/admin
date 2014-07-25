@@ -104,20 +104,34 @@ class __TwigTemplate_83964657cc306c6f6bfb9573c324bb766d005dcea74bbb09d6f7ea36383
           <div class=\"form-group\">
               <div class=\"col-md-2\">";
         // line 33
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "endpoint"), 'label');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "pin"), 'label');
         echo "</div>
               <div class=\"col-md-2\">";
         // line 34
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "endpoint"), 'widget');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "pin"), 'widget');
         echo "</div>
               <div class=\"col-md-3\">";
         // line 35
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "pin"), 'errors');
+        echo "</div>
+          </div>
+          <div class=\"form-group\">
+              <div class=\"col-md-2\">";
+        // line 38
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "endpoint"), 'label');
+        echo "</div>
+              <div class=\"col-md-2\">";
+        // line 39
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "endpoint"), 'widget');
+        echo "</div>
+              <div class=\"col-md-3\">";
+        // line 40
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "endpoint"), 'errors');
         echo "</div>
           </div>
           <div class=\"form-group\">
               ";
-        // line 38
+        // line 43
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'rest');
         echo "
           </div>
@@ -128,7 +142,7 @@ class __TwigTemplate_83964657cc306c6f6bfb9573c324bb766d005dcea74bbb09d6f7ea36383
     </div>
 \t
     <a href=\"";
-        // line 46
+        // line 51
         echo $this->env->getExtension('routing')->getPath("smartcampus_accueil");
         echo "\" class=\"btn\">
         Retour à l'accueil
@@ -149,6 +163,6 @@ class __TwigTemplate_83964657cc306c6f6bfb9573c324bb766d005dcea74bbb09d6f7ea36383
 
     public function getDebugInfo()
     {
-        return array (  132 => 46,  121 => 38,  115 => 35,  111 => 34,  107 => 33,  101 => 30,  97 => 29,  93 => 28,  87 => 25,  83 => 24,  79 => 23,  73 => 20,  69 => 19,  65 => 18,  59 => 15,  55 => 14,  51 => 13,  46 => 11,  39 => 6,  36 => 5,  29 => 3,);
+        return array (  146 => 51,  135 => 43,  129 => 40,  125 => 39,  121 => 38,  115 => 35,  111 => 34,  107 => 33,  101 => 30,  97 => 29,  93 => 28,  87 => 25,  83 => 24,  79 => 23,  73 => 20,  69 => 19,  65 => 18,  59 => 15,  55 => 14,  51 => 13,  46 => 11,  39 => 6,  36 => 5,  29 => 3,);
     }
 }

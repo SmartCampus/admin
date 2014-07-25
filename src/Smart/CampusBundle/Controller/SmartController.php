@@ -68,6 +68,28 @@ class SmartController extends Controller
 	
 //-----------------------------------------------------------------------------------------------------
     
+    /** Ajouter une board */
+	public function ajouterBAction()
+	{		
+        $board = new Board();
+        $form = $this->createForm(new BoardType, $board);
+        
+        $request = $this->get('request');
+        if($request->getMethod() == 'POST'){
+            $form->bind($request);
+            
+            if($form->isValid()){
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($board);
+                $em->flush();
+                
+                return $this->redirect($this->generateUrl('smartcampus_accueil'));
+            }
+        }
+        
+        return $this->render('SmartCampusBundle:Smart:ajoutB.html.twig', array('form' => $form->createView(),));
+	}
+    
     /** Ajouter un capteur Virtuel a la BD */
 	public function ajouterVAction()
 	{		
@@ -196,7 +218,13 @@ class SmartController extends Controller
         
         if($cap === null)
         {
-            throw $this->createNotFoundException('Capteur[id='.$id.'] inexistant.');
+            $cap = $this->getDoctrine()
+                ->getRepository('SmartCampusBundle:Physique')
+                ->find($id);
+            if($cap === null)
+            {
+                throw $this->createNotFoundException('Capteur[id='.$id.'] inexistant.');
+            }
         }
         
         $form = $this->createFormBuilder()->getForm();

@@ -33,20 +33,20 @@ class __TwigTemplate_ea9abcc56754c237e171268b7cbb570056134ccc3dcc6d15a2a724194cb
     ";
         // line 8
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 22
+        // line 23
         echo "      
     ";
-        // line 23
+        // line 24
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 32
+        // line 33
         echo "      
   </head>
 
   <body>
       ";
-        // line 36
+        // line 37
         $this->displayBlock('body', $context, $blocks);
-        // line 39
+        // line 40
         echo "  </body>
 </html> ";
     }
@@ -82,13 +82,17 @@ class __TwigTemplate_ea9abcc56754c237e171268b7cbb570056134ccc3dcc6d15a2a724194cb
         // line 20
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/tri.js"), "html", null, true);
         echo "\"></script>
+      <script type=\"text/javascript\" src=\"";
+        // line 21
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/board.js"), "html", null, true);
+        echo "\"></script>
     ";
     }
 
-    // line 23
+    // line 24
     public function block_stylesheets($context, array $blocks = array())
     {
-        // line 24
+        // line 25
         echo "      <link rel=\"stylesheet\" href=\"//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css\">
       <link rel=\"stylesheet\" href=\"//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css\">
       
@@ -96,16 +100,16 @@ class __TwigTemplate_ea9abcc56754c237e171268b7cbb570056134ccc3dcc6d15a2a724194cb
       <link rel=\"stylesheet\" href=\"//cdn.datatables.net/plug-ins/be7019ee387/integration/jqueryui/dataTables.jqueryui.css\">
       
       <link rel=\"stylesheet\" href=\"";
-        // line 30
+        // line 31
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/style.css"), "html", null, true);
         echo "\" type=\"text/css\" />
     ";
     }
 
-    // line 36
+    // line 37
     public function block_body($context, array $blocks = array())
     {
-        // line 37
+        // line 38
         echo "        
       ";
     }
@@ -117,6 +121,6 @@ class __TwigTemplate_ea9abcc56754c237e171268b7cbb570056134ccc3dcc6d15a2a724194cb
 
     public function getDebugInfo()
     {
-        return array (  109 => 37,  106 => 36,  100 => 30,  92 => 24,  89 => 23,  75 => 18,  64 => 9,  61 => 8,  50 => 39,  48 => 36,  42 => 32,  40 => 23,  37 => 22,  35 => 8,  30 => 6,  23 => 1,  149 => 72,  138 => 64,  101 => 30,  97 => 29,  93 => 28,  87 => 25,  83 => 20,  79 => 19,  73 => 20,  69 => 19,  65 => 18,  59 => 15,  55 => 6,  51 => 13,  46 => 11,  39 => 6,  36 => 5,  29 => 3,);
+        return array (  113 => 38,  110 => 37,  104 => 31,  96 => 25,  93 => 24,  87 => 21,  83 => 20,  79 => 19,  75 => 18,  64 => 9,  61 => 8,  55 => 6,  50 => 40,  48 => 37,  42 => 33,  40 => 24,  37 => 23,  35 => 8,  30 => 6,  23 => 1,);
     }
 }
