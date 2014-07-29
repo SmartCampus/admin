@@ -8,7 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PhysiqueEditType extends AbstractType
 {
-        /**
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -16,8 +16,7 @@ class PhysiqueEditType extends AbstractType
     {
         $builder
             ->add('frequency',  'integer')
-            ->add('endpoint',   new EndpointType());
-        ;
+            ->add('endpoint',   new EndpointEditType());
     }
     
     /**

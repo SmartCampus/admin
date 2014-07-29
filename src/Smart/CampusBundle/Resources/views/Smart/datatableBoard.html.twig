@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="panel panel-default">
+        <table id="tablerecherche" class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                {% for board in boardAll %}
+                    <tr>
+                        <td>
+                            {{ board.name }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<a href="{{ path('smartcampus_ajouterB') }}" class="btn btn-primary bouton-accueil">
+    + Board
+</a>
+

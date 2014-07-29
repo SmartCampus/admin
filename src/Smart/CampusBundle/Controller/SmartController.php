@@ -23,6 +23,10 @@ class SmartController extends Controller
     /** Index du SmartCampus */
     public function indexAction()
     {        
+        $boardAll = $this->getDoctrine()
+                ->getRepository('SmartCampusBundle:Board')
+                ->findAll();
+        
         $virAll = $this->getDoctrine()
                 ->getRepository('SmartCampusBundle:Virtuel')
                 ->findAll();
@@ -31,7 +35,9 @@ class SmartController extends Controller
                 ->getRepository('SmartCampusBundle:Physique')
                 ->findAll();
         
-        return $this->render('SmartCampusBundle:Smart:index.html.twig', array('virAll' => $virAll, 'phyAll' => $phyAll));
+        $tag = $this->getRequest()->query->get('tag');
+        
+        return $this->render('SmartCampusBundle:Smart:index.html.twig', array('tag' => $tag, 'boardAll' => $boardAll, 'virAll' => $virAll, 'phyAll' => $phyAll));
     }
 
 //-----------------------------------------------------------------------------------------------------
@@ -83,6 +89,8 @@ class SmartController extends Controller
                 $em->persist($board);
                 $em->flush();
                 
+                $this->get('session')->getFlashBag()->add('info', 'Nouvelle board ajouté avec succès');
+                
                 return $this->redirect($this->generateUrl('smartcampus_accueil'));
             }
         }
@@ -94,6 +102,7 @@ class SmartController extends Controller
 	public function ajouterVAction()
 	{		
         $vir = new Virtuel();
+        $vir->setScript("Taper ici votre script");
         $form = $this->createForm(new VirtuelType, $vir);
         
         $request = $this->get('request');
@@ -209,21 +218,21 @@ class SmartController extends Controller
 //-----------------------------------------------------------------------------------------------------
     
     /** Supprimer un capteur de la BD */
-	public function supprimerAction($id)
+	public function supprimerAction($name)
 	{
         
         $cap = $this->getDoctrine()
                 ->getRepository('SmartCampusBundle:Virtuel')
-                ->find($id);
+                ->find($name);
         
         if($cap === null)
         {
             $cap = $this->getDoctrine()
                 ->getRepository('SmartCampusBundle:Physique')
-                ->find($id);
+                ->find($name);
             if($cap === null)
             {
-                throw $this->createNotFoundException('Capteur[id='.$id.'] inexistant.');
+                throw $this->createNotFoundException('Element[name='.$name.'] inexistant.');
             }
         }
         

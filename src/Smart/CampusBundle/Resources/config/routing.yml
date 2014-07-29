@@ -39,11 +39,5 @@ smartcampus_modifierP:
         id: \d+
 
 smartcampus_supprimer:
-    path:  /supprimer/{id}
+    path:  /supprimer/{name}
     defaults: { _controller: SmartCampusBundle:Smart:supprimer }
-    requirements:
-        id: \d+
-        
-smartcampus_redirect:
-    path:  /redirect
-    defaults: { _controller: SmartCampusBundle:Smart:redirect }

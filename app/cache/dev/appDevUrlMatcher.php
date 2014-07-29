@@ -187,13 +187,8 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // smartcampus_supprimer
-            if (0 === strpos($pathinfo, '/smartcampus/supprimer') && preg_match('#^/smartcampus/supprimer/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/smartcampus/supprimer') && preg_match('#^/smartcampus/supprimer/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'smartcampus_supprimer')), array (  '_controller' => 'Smart\\CampusBundle\\Controller\\SmartController::supprimerAction',));
-            }
-
-            // smartcampus_redirect
-            if ($pathinfo === '/smartcampus/redirect') {
-                return array (  '_controller' => 'Smart\\CampusBundle\\Controller\\SmartController::redirectAction',  '_route' => 'smartcampus_redirect',);
             }
 
         }

@@ -40,34 +40,60 @@ class __TwigTemplate_418116ea6a32a0db89513854f09bf5e9037676f31d92565e65dcb5c3ac2
         echo twig_escape_filter($this->env, (isset($context["titre"]) ? $context["titre"] : $this->getContext($context, "titre")), "html", null, true);
         echo "</h1>
 
-    
+    <!-- Navigation -->
+    ";
+        // line 9
+        $this->env->loadTemplate("SmartCampusBundle:Smart:navigation.html.twig")->display($context);
+        // line 10
+        echo "    
     <div class=\"container\">
         
-        <!-- DataTable -->
         ";
-        // line 12
-        $this->env->loadTemplate("SmartCampusBundle:Smart:datatable.html.twig")->display($context);
         // line 13
-        echo "
-        <a href=\"";
-        // line 14
-        echo $this->env->getExtension('routing')->getPath("smartcampus_ajouterB");
-        echo "\" class=\"btn btn-primary bouton-accueil\">
-            + Board
-        </a>
-        <a href=\"";
-        // line 17
-        echo $this->env->getExtension('routing')->getPath("smartcampus_ajouterV");
-        echo "\" class=\"btn btn-primary bouton-accueil\">
-            + Capteur Virtuel
-        </a>
-        <a href=\"";
-        // line 20
-        echo $this->env->getExtension('routing')->getPath("smartcampus_ajouterP");
-        echo "\" class=\"btn btn-primary bouton-accueil\">
-            + Capteur Physique
-        </a>
+        if ((((isset($context["tag"]) ? $context["tag"] : $this->getContext($context, "tag")) == "All") || ((isset($context["tag"]) ? $context["tag"] : $this->getContext($context, "tag")) == null))) {
+            // line 14
+            echo "        ";
+            $this->env->loadTemplate("SmartCampusBundle:Smart:datatableAll.html.twig")->display($context);
+            // line 15
+            echo "        ";
+        }
+        // line 16
+        echo "        ";
+        if (((isset($context["tag"]) ? $context["tag"] : $this->getContext($context, "tag")) == "Phy")) {
+            // line 17
+            echo "        ";
+            $this->env->loadTemplate("SmartCampusBundle:Smart:datatablePhy.html.twig")->display($context);
+            // line 18
+            echo "        ";
+        }
+        // line 19
+        echo "        ";
+        if (((isset($context["tag"]) ? $context["tag"] : $this->getContext($context, "tag")) == "Vir")) {
+            // line 20
+            echo "        ";
+            $this->env->loadTemplate("SmartCampusBundle:Smart:datatableVir.html.twig")->display($context);
+            // line 21
+            echo "        ";
+        }
+        // line 22
+        echo "        ";
+        if (((isset($context["tag"]) ? $context["tag"] : $this->getContext($context, "tag")) == "Board")) {
+            // line 23
+            echo "        ";
+            $this->env->loadTemplate("SmartCampusBundle:Smart:datatableBoard.html.twig")->display($context);
+            // line 24
+            echo "        ";
+        }
+        // line 25
+        echo "        
     </div>
+
+    <!-- Boite dialogue ajout board -->
+    ";
+        // line 29
+        $this->env->loadTemplate("SmartCampusBundle:Smart:dialogue.html.twig")->display($context);
+        // line 30
+        echo "
 ";
     }
 
@@ -83,6 +109,6 @@ class __TwigTemplate_418116ea6a32a0db89513854f09bf5e9037676f31d92565e65dcb5c3ac2
 
     public function getDebugInfo()
     {
-        return array (  66 => 20,  60 => 17,  54 => 14,  51 => 13,  49 => 12,  39 => 6,  36 => 5,  29 => 3,);
+        return array (  96 => 30,  94 => 29,  88 => 25,  85 => 24,  82 => 23,  79 => 22,  76 => 21,  73 => 20,  70 => 19,  67 => 18,  64 => 17,  61 => 16,  58 => 15,  55 => 14,  53 => 13,  48 => 10,  46 => 9,  39 => 6,  36 => 5,  29 => 3,);
     }
 }

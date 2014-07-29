@@ -4,12 +4,14 @@ namespace Smart\CampusBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Board
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Smart\CampusBundle\Entity\BoardRepository")
+ * @UniqueEntity("name")
  */
 class Board
 {

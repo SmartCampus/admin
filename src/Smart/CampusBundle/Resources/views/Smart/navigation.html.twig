@@ -1,0 +1,35 @@
+{% if (tag == "All") or (tag == NULL) %}
+<ul class="nav nav-tabs nav-justified" role="tablist">
+    <li class="active"><a href="?tag=All">Tout les capteurs</a></li>
+    <li><a href="?tag=Phy">Capteurs Physique</a></li>
+    <li><a href="?tag=Vir">Capteurs Virtuels</a></li>
+    <li><a href="?tag=Board">Boards</a></li>
+</ul>
+{% endif %}
+
+{% if tag == "Phy" %}
+<ul class="nav nav-tabs nav-justified" role="tablist">
+    <li><a href="?tag=All">Tout les capteurs</a></li>
+    <li class="active"><a href="?tag=Phy">Capteurs Physique</a></li>
+    <li><a href="?tag=Vir">Capteurs Virtuels</a></li>
+    <li><a href="?tag=Board">Boards</a></li>
+</ul>
+{% endif %}
+
+{% if tag == "Vir" %}
+<ul class="nav nav-tabs nav-justified" role="tablist">
+    <li><a href="?tag=All">Tout les capteurs</a></li>
+    <li><a href="?tag=Phy">Capteurs Physique</a></li>
+    <li class="active"><a href="?tag=Vir">Capteurs Virtuels</a></li>
+    <li><a href="?tag=Board">Boards</a></li>
+</ul>
+{% endif %}
+
+{% if tag == "Board" %}
+<ul class="nav nav-tabs nav-justified" role="tablist">
+    <li><a href="?tag=All">Tout les capteurs</a></li>
+    <li><a href="?tag=Phy">Capteurs Physique</a></li>
+    <li><a href="?tag=Vir">Capteurs Virtuels</a></li>
+    <li class="active"><a href="?tag=Board">Boards</a></li>
+</ul>
+{% endif %}
