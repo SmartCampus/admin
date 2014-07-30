@@ -2,12 +2,14 @@
 
 namespace Smart\CampusBundle\Form;
 
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PhysiqueType extends AbstractType
 {
+    
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -23,12 +25,16 @@ class PhysiqueType extends AbstractType
                 ),
             ))
             ->add('frequency',  'integer')
-            ->add('board',      new BoardType())
-            /*->add('board',       'entity', array(
+            /*->add('board',  new BoardType())*/
+            ->add('board',       'entity', array(
                 'class' => 'SmartCampusBundle:Board',
-                'property' => 'name',
-                'multiple' => true)
-            )*/
+                'query_builder' => function(EntityRepository $er)
+                {
+                    return $er->createQueryBuilder('b')
+                        ->orderBy('b.name', 'ASC');
+                },
+                'property' => 'name')
+            )
             ->add('pin',    'integer')
             ->add('endpoint',   new EndpointType());
         ;
@@ -40,7 +46,8 @@ class PhysiqueType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Smart\CampusBundle\Entity\Physique'
+            'data_class' => 'Smart\CampusBundle\Entity\Physique',
+            'cascade_validation' => true,
         ));
     }
 

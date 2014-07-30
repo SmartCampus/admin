@@ -4,79 +4,52 @@
 ####################################################
 
 =====================
+Ajouter un kind :
+=====================
+
+Aller dans le fichier src\Smart\CampusBundle\Form\PhysiqueType.php
+Ajouter votre nouveau kind de la forme 'nom' => 'valeur' dans les lignes suivantes :
+
+        ->add('kind',       'choice', array(
+            'choices' => array(
+                'temperature' => 'Température',
+                'light' => 'Light',
+                //'newkind' => 'Nouveau Kind',
+            ),
+        ))
+
+=====================
 Structure du projet :
 =====================
 
 +app
 	+cache
-		dev
-		prod
-		
-	+config
-		// config files
-		// parameters files
-		// routing files
-		
+	+config		
 	+logs
 	+Ressources
-		+views
+        +views                              //Vue de base avec toute les declaration de script et style
 	
 +bin
-
 +src
     +Smart
         +CampusBundle
-            +Controller
+            +Controller                     //Controller de l'application avec toute les methodes
             +DependencyInjection
-            +Entity
-                //Capteur
-                //Capteur virtuels
-                //properties
+            +Entity                         //Entites de l'application avec leurs repository (ne pas modifier ces dernier)
                 
-            +Form
+            +Form                           //Structure des formulaire de creation des entites pour ajout ou edition
             +Ressources
-                +configs
+                +configs                    //routing.yml definit les routes pour les methodes du controleur et les vues twig
                 +doc
-                +public
-                    +css
-                    +images
-                    +js
-                    
                 +translations
-                +views
-                    +Smart
-                    //vues de lapplication
-                    //.twig (<=> html)
+                +views                      //Vues de l'application twig permet de recuperer des variables du controler et d'appliquer certaines methodes
             +Tests
                 +Controller
 
-+vendor
-	// bibliotheques externes a l'application
-	+composer
-	+doctrine
-	+incenteev
-	+jdorn
-	+kriswallsmith
-	+monolog
-	+psr
-	+sensio
-	+swiftmailer
-	+symfony
-	+twig
-
++vendor                                     // bibliotheques externes a l'application
 +web
 	+bundles
-		+acmedemo
-			+css
-			+images
-			
-		+framework
-			+css
-			+images
-			
-		+sensiodistribution
-			+webconfigurator
-				+css
-				+images
+    +css                                    //fichier style
+    +js                                     //fichier script
 				
 				

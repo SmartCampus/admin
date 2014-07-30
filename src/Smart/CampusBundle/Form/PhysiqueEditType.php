@@ -16,7 +16,7 @@ class PhysiqueEditType extends AbstractType
     {
         $builder
             ->add('frequency',  'integer')
-            ->add('endpoint',   new EndpointEditType());
+            ->add('endpoint',   new EndpointType());
     }
     
     /**
@@ -25,7 +25,8 @@ class PhysiqueEditType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Smart\CampusBundle\Entity\Physique'
+            'data_class' => 'Smart\CampusBundle\Entity\Physique',
+            'cascade_validation' => true,
         ));
     }
 

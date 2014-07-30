@@ -35,6 +35,7 @@ class SmartController extends Controller
                 ->getRepository('SmartCampusBundle:Physique')
                 ->findAll();
         
+        //recupere le tag dans l'url
         $tag = $this->getRequest()->query->get('tag');
         
         return $this->render('SmartCampusBundle:Smart:index.html.twig', array('tag' => $tag, 'boardAll' => $boardAll, 'virAll' => $virAll, 'phyAll' => $phyAll));
@@ -134,6 +135,8 @@ class SmartController extends Controller
             if($form->isValid()){
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($phy);
+                /*$em->persist($phy->getBoard());
+                $em->persist($phy->getEndpoint());*/
                 $em->flush();
                 
                 return $this->redirect($this->generateUrl('smartcampus_voirP', array('id' => $phy->getId())));
@@ -204,6 +207,8 @@ class SmartController extends Controller
             {
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($phy);
+                $em->persist($phy->getBoard());
+                $em->persist($phy->getEndpoint());
                 $em->flush();
 
                 $this->get('session')->getFlashBag()->add('info', 'Modification enregistré avec succès');

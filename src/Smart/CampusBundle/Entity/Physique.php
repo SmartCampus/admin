@@ -4,15 +4,12 @@ namespace Smart\CampusBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Physique
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Smart\CampusBundle\Entity\PhysiqueRepository")
- * @UniqueEntity("board")
- * @UniqueEntity("endpoint")
  */
 class Physique extends Capteur
 {
@@ -20,6 +17,7 @@ class Physique extends Capteur
      * @var \stdClass
      *
      * @ORM\Column(name="board", type="object")
+     * @ORM\ManyToOne(targetEntity="Smart\CampusBundle\Entity\Board")
      */
     private $board;
 
@@ -35,6 +33,8 @@ class Physique extends Capteur
      * @var \stdClass
      *
      * @ORM\Column(name="endpoint", type="object")
+     * @ORM\OneToOne(targetEntity="Smart\CampusBundle\Entity\Endpoint")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $endpoint;
 
@@ -107,4 +107,6 @@ class Physique extends Capteur
     {
         return $this->endpoint;
     }
+    
+    
 }
