@@ -92,7 +92,7 @@ class SmartController extends Controller
                 
                 $this->get('session')->getFlashBag()->add('info', 'Nouvelle board ajouté avec succès');
                 
-                return $this->redirect($this->generateUrl('smartcampus_accueil'));
+                return $this->redirect($this->generateUrl('smartcampus_accueil', array('tag' => "Board")));
             }
         }
         
