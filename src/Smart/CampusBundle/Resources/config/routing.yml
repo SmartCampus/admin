@@ -39,5 +39,5 @@ smartcampus_modifierP:
         id: \d+
 
 smartcampus_supprimer:
-    path:  /supprimer/{name}
+    path:  /supprimer/{id}
     defaults: { _controller: SmartCampusBundle:Smart:supprimer }

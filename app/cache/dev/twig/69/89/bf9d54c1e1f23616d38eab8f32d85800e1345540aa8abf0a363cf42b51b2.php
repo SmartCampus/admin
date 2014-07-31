@@ -73,7 +73,7 @@ class __TwigTemplate_6989bf9d54c1e1f23616d38eab8f32d85800e1345540aa8abf0a363cf42
 \t
     <a href=\"";
         // line 26
-        echo $this->env->getExtension('routing')->getPath("smartcampus_accueil");
+        echo $this->env->getExtension('routing')->getPath("smartcampus_accueil", array("tag" => "Board"));
         echo "\" class=\"btn\">
         Retour à l'accueil
     </a>

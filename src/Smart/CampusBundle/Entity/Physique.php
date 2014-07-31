@@ -16,8 +16,8 @@ class Physique extends Capteur
     /**
      * @var \stdClass
      *
-     * @ORM\Column(name="board", type="object")
-     * @ORM\ManyToOne(targetEntity="Smart\CampusBundle\Entity\Board")
+     * @ORM\ManyToOne(targetEntity="Smart\CampusBundle\Entity\Board", cascade={"refresh", "merge", "persist", "detach"})
+     * @ORM\JoinColumn(name="board_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $board;
 
@@ -31,10 +31,8 @@ class Physique extends Capteur
     
     /**
      * @var \stdClass
-     *
-     * @ORM\Column(name="endpoint", type="object")
-     * @ORM\OneToOne(targetEntity="Smart\CampusBundle\Entity\Endpoint")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToOne(targetEntity="Smart\CampusBundle\Entity\Endpoint", cascade={"all"})
+     * @ORM\JoinColumn(name="endpoint_id", referencedColumnName="id", nullable=true)
      */
     private $endpoint;
 

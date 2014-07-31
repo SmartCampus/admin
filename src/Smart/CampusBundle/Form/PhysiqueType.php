@@ -25,7 +25,6 @@ class PhysiqueType extends AbstractType
                 ),
             ))
             ->add('frequency',  'integer')
-            /*->add('board',  new BoardType())*/
             ->add('board',       'entity', array(
                 'class' => 'SmartCampusBundle:Board',
                 'query_builder' => function(EntityRepository $er)
@@ -46,8 +45,7 @@ class PhysiqueType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Smart\CampusBundle\Entity\Physique',
-            'cascade_validation' => true,
+            'data_class' => 'Smart\CampusBundle\Entity\Physique'
         ));
     }
 

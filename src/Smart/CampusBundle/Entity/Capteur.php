@@ -10,6 +10,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * Capteur
  *
  * @ORM\MappedSuperclass(repositoryClass="Smart\CampusBundle\Entity\PhysiqueRepository")
+ * @UniqueEntity("id")
  * @UniqueEntity("name")
  */
 class Capteur
@@ -17,7 +18,7 @@ class Capteur
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", unique=true)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -26,7 +27,7 @@ class Capteur
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, unique=true)
      * @Assert\Regex(pattern= "/[A-Z]{4,5}_[0-9]{3}V?/")
      */
     private $name;

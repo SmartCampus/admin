@@ -25,8 +25,7 @@ class PhysiqueEditType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Smart\CampusBundle\Entity\Physique',
-            'cascade_validation' => true,
+            'data_class' => 'Smart\CampusBundle\Entity\Physique'
         ));
     }
 

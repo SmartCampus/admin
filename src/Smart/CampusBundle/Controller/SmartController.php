@@ -135,8 +135,7 @@ class SmartController extends Controller
             if($form->isValid()){
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($phy);
-                /*$em->persist($phy->getBoard());
-                $em->persist($phy->getEndpoint());*/
+                $em->persist($phy->getEndpoint());
                 $em->flush();
                 
                 return $this->redirect($this->generateUrl('smartcampus_voirP', array('id' => $phy->getId())));
@@ -206,9 +205,8 @@ class SmartController extends Controller
             if ($form->isValid())
             {
                 $em = $this->getDoctrine()->getManager();
+                $em->merge($phy->getEndpoint());
                 $em->persist($phy);
-                $em->persist($phy->getBoard());
-                $em->persist($phy->getEndpoint());
                 $em->flush();
 
                 $this->get('session')->getFlashBag()->add('info', 'Modification enregistré avec succès');
@@ -223,21 +221,21 @@ class SmartController extends Controller
 //-----------------------------------------------------------------------------------------------------
     
     /** Supprimer un capteur de la BD */
-	public function supprimerAction($name)
+	public function supprimerAction($id)
 	{
         
         $cap = $this->getDoctrine()
                 ->getRepository('SmartCampusBundle:Virtuel')
-                ->find($name);
+                ->find($id);
         
         if($cap === null)
         {
             $cap = $this->getDoctrine()
                 ->getRepository('SmartCampusBundle:Physique')
-                ->find($name);
+                ->find($id);
             if($cap === null)
             {
-                throw $this->createNotFoundException('Element[name='.$name.'] inexistant.');
+                throw $this->createNotFoundException('Capteur[id='.$id.'] inexistant.');
             }
         }
         
@@ -248,7 +246,7 @@ class SmartController extends Controller
         {
           $form->bind($request);
 
-          if ($form->isNotValid())
+          if($form->isNotValid())
           {
             throw $this->createNotFoundException('ERREUR : formulaire.');
             

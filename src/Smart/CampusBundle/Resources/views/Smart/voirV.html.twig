@@ -37,7 +37,7 @@
             Modifier
         </a>
 
-        <input type="button" value="Supprimer" class="btn btn btn-danger" onclick="suppr('{{ path('smartcampus_supprimer', {'name': capteur.name}) }}');">
+        <input type="button" value="Supprimer" class="btn btn btn-danger" onclick="suppr('{{ path('smartcampus_supprimer', {'id': capteur.id}) }}');">
 
         <div id="supp-message" title="Suppression" style="visibility: hidden">            
           <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>

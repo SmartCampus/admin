@@ -27,8 +27,8 @@ class Board
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
-     * @Assert\Regex(pattern= "/[A-Z]{3,5}_[0-9]+_[0-9]+/")
+     * @ORM\Column(name="name", type="string", length=255, unique=true)
+     * @Assert\Regex(pattern= "/[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+/")
      */
     private $name;
 
