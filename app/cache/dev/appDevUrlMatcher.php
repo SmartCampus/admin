@@ -145,6 +145,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'Smart\\CampusBundle\\Controller\\SmartController::indexAction',  '_route' => 'smartcampus_accueil',);
             }
 
+            // smartcampus_voirB
+            if (0 === strpos($pathinfo, '/smartcampus/board') && preg_match('#^/smartcampus/board/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'smartcampus_voirB')), array (  '_controller' => 'Smart\\CampusBundle\\Controller\\SmartController::voirBAction',));
+            }
+
             // smartcampus_voirV
             if (0 === strpos($pathinfo, '/smartcampus/virtuel') && preg_match('#^/smartcampus/virtuel/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'smartcampus_voirV')), array (  '_controller' => 'Smart\\CampusBundle\\Controller\\SmartController::voirVAction',));

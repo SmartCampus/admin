@@ -1,0 +1,12 @@
+<br>
+===============================================
+<br>
+<br>
+<div class="row">
+    <div class="col-md-2">Proprietes :</div>
+    <div class="col-md-2">
+        {% for prop in capteur.propriete %}
+            <p>{{ prop.name }} : {{ prop.value }}</p>
+        {% endfor %}
+    </div>
+</div>

@@ -43,6 +43,20 @@ class SmartController extends Controller
 
 //-----------------------------------------------------------------------------------------------------
     
+    /** Afiche une Board */
+	public function voirBAction($id)
+	{
+        $board = $this->getDoctrine()
+                ->getRepository('SmartCampusBundle:Board')
+                ->find($id);
+
+        if($board === null)
+        {
+            throw $this->createNotFoundException('Board[id='.$id.'] inexistant.');
+        }
+        return $this->render('SmartCampusBundle:Smart:voirB.html.twig', array('board' => $board));
+	}
+    
     /** Afiche un capteur Virtuel */
 	public function voirVAction($id)
 	{
@@ -54,7 +68,6 @@ class SmartController extends Controller
         {
             throw $this->createNotFoundException('Capteur[id='.$id.'] inexistant.');
         }
-        
         return $this->render('SmartCampusBundle:Smart:voirV.html.twig', array('capteur' => $cap));
 	}
     
@@ -69,7 +82,6 @@ class SmartController extends Controller
         {
             throw $this->createNotFoundException('Capteur[id='.$id.'] inexistant.');
         }
-        
         return $this->render('SmartCampusBundle:Smart:voirP.html.twig', array('capteur' => $cap));
 	}
 	
@@ -144,7 +156,16 @@ class SmartController extends Controller
         
         return $this->render('SmartCampusBundle:Smart:ajoutP.html.twig', array('form' => $form->createView(),));
 	}
-	
+
+//-----------------------------------------------------------------------------------------------------	
+    
+    /** Encoder en JSON */
+    private function encodeJson(Capteur $cap)
+    {
+        $response = new Response(json_encode(array('name' => $cap->getName())));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
 //-----------------------------------------------------------------------------------------------------
     
     /** Modifier les infos d'un capteur Virtuel */
@@ -260,9 +281,3 @@ class SmartController extends Controller
         return $this->redirect($this->generateUrl('smartcampus_accueil'));
 	}
 }
-
-//P-B : Generer du JSON :
-//$id = 9;
-//$response = new Response(json_encode(array('id' => $id)));
-//$response->headers->set('Content-Type', 'application/json');
-//return $response; TODO : enregistrer le Json et l'envoyer a l'autre base

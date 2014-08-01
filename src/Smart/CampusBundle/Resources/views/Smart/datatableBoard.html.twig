@@ -9,7 +9,7 @@
             
             <tbody>
                 {% for board in boardAll %}
-                    <tr>
+                    <tr class="lien" style="cursor: pointer;" onclick="location.href='{{ path('smartcampus_voirB', {'id': board.id}) }}';">
                         <td>
                             {{ board.name }}
                         </td>

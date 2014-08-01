@@ -1,0 +1,33 @@
+{% extends "SmartCampusBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Visualisation{% endblock %}
+
+{% block body %}
+
+    <h1>Visualisation de {{ board.name }}</h1>
+
+    <div class="container">
+        <div class="well">
+            <div class="row">
+                <div class="col-md-2">Board : </div>
+                <div class="col-md-2">{{ board.name }}</div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">capteurs Physiques :</div>
+                
+                <div class="col-md-2">
+                    {% for phy in board.physique %}
+                        <p>{{ phy.name }}</p>
+                    {% endfor %}
+                </div>
+                
+            </div>
+        </div>
+
+        <a href="{{ path('smartcampus_accueil', {'tag': 'Board'}) }}" class="btn">
+            Retour à l'accueil
+        </a>
+    </div>
+
+{% endblock %}

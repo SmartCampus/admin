@@ -2,6 +2,12 @@ smartcampus_accueil:
     path:  /
     defaults: { _controller: SmartCampusBundle:Smart:index }
 
+smartcampus_voirB:
+    path:  /board/{id}
+    defaults: { _controller: SmartCampusBundle:Smart:voirB }
+    requirements :
+        id: \d+
+        
 smartcampus_voirV:
     path:  /virtuel/{id}
     defaults: { _controller: SmartCampusBundle:Smart:voirV }

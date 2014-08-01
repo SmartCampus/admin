@@ -31,7 +31,16 @@ class Board
      * @Assert\Regex(pattern= "/[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+/")
      */
     private $name;
-
+    
+    /**
+     * @var array
+     *
+     * @ORM\OneToMany(targetEntity="Smart\CampusBundle\Entity\Physique", mappedBy="board", cascade={"refresh", "merge", "persist", "detach"})
+     * @ORM\JoinColumn(name="physique_id", referencedColumnName="id", onDelete="SET NULL")
+     */
+    private $physique;
+    
+    
     /**
      * Get id
      *
@@ -63,5 +72,15 @@ class Board
     public function getName()
     {
         return $this->name;
+    }
+    
+    /**
+     * Get physique
+     *
+     * @return array
+     */
+    public function getPhysique()
+    {
+        return $this->physique;
     }
 }

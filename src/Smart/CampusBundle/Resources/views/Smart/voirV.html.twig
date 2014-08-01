@@ -8,25 +8,14 @@
 
     <div class="container">
         <div class="well">
-            <div class="row">
-                <div class="col-md-2">Capteur : </div>
-                <div class="col-md-2">{{ capteur.name }}</div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-md-2">Kind :</div>
-                <div class="col-md-2">{{ capteur.kind }}</div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-md-2">Frequency :</div>
-                <div class="col-md-2">{{ capteur.frequency }}</div>
-            </div>
-            <br>
+            <!--parties communes a tout les capteurs-->
+            {% include "SmartCampusBundle:Smart:voirC.html.twig" %}
             <div class="row">
                 <div class="col-md-2">Script :</div>
                 <div class="col-md-2">{{ capteur.script }}</div>
             </div>
+            <!--proprietes des capteurs-->
+            {% include "SmartCampusBundle:Smart:voirProp.html.twig" %}
         </div>
 
         <a href="{{ path('smartcampus_accueil') }}" class="btn">

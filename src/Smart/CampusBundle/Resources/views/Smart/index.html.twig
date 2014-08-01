@@ -3,7 +3,7 @@
 {% block title %}{{ parent() }} - Index{% endblock %}
 
 {% block body %}
-    <h1>{{ titre }}</h1>
+    <h1 onclick="location.href='{{ path('smartcampus_accueil') }}';">{{ titre }}</h1>
 
     <!-- Navigation -->
     {% include "SmartCampusBundle:Smart:navigation.html.twig" %}

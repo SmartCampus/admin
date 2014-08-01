@@ -32,7 +32,9 @@ class __TwigTemplate_4ccf484488edc7c7fced03e1505d4c211445799ab34404b96e6061aefb8
         $context['_seq'] = twig_ensure_traversable((isset($context["boardAll"]) ? $context["boardAll"] : $this->getContext($context, "boardAll")));
         foreach ($context['_seq'] as $context["_key"] => $context["board"]) {
             // line 12
-            echo "                    <tr>
+            echo "                    <tr class=\"lien\" style=\"cursor: pointer;\" onclick=\"location.href='";
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("smartcampus_voirB", array("id" => $this->getAttribute((isset($context["board"]) ? $context["board"] : $this->getContext($context, "board")), "id"))), "html", null, true);
+            echo "';\">
                         <td>
                             ";
             // line 14
@@ -73,6 +75,6 @@ class __TwigTemplate_4ccf484488edc7c7fced03e1505d4c211445799ab34404b96e6061aefb8
 
     public function getDebugInfo()
     {
-        return array (  56 => 23,  49 => 18,  39 => 14,  35 => 12,  31 => 11,  19 => 1,);
+        return array (  58 => 23,  51 => 18,  41 => 14,  35 => 12,  31 => 11,  19 => 1,);
     }
 }

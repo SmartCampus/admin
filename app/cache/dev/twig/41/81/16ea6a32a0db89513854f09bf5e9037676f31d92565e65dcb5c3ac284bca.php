@@ -36,7 +36,9 @@ class __TwigTemplate_418116ea6a32a0db89513854f09bf5e9037676f31d92565e65dcb5c3ac2
     public function block_body($context, array $blocks = array())
     {
         // line 6
-        echo "    <h1>";
+        echo "    <h1 onclick=\"location.href='";
+        echo $this->env->getExtension('routing')->getPath("smartcampus_accueil");
+        echo "';\">";
         echo twig_escape_filter($this->env, (isset($context["titre"]) ? $context["titre"] : $this->getContext($context, "titre")), "html", null, true);
         echo "</h1>
 
@@ -109,6 +111,6 @@ class __TwigTemplate_418116ea6a32a0db89513854f09bf5e9037676f31d92565e65dcb5c3ac2
 
     public function getDebugInfo()
     {
-        return array (  96 => 30,  94 => 29,  88 => 25,  85 => 24,  82 => 23,  79 => 22,  76 => 21,  73 => 20,  70 => 19,  67 => 18,  64 => 17,  61 => 16,  58 => 15,  55 => 14,  53 => 13,  48 => 10,  46 => 9,  39 => 6,  36 => 5,  29 => 3,);
+        return array (  98 => 30,  96 => 29,  90 => 25,  87 => 24,  84 => 23,  81 => 22,  78 => 21,  75 => 20,  72 => 19,  69 => 18,  66 => 17,  63 => 16,  60 => 15,  57 => 14,  55 => 13,  50 => 10,  48 => 9,  39 => 6,  36 => 5,  29 => 3,);
     }
 }

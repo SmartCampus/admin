@@ -44,55 +44,41 @@ class __TwigTemplate_97a4de7d48f33fa05bfaaea6651420895c9aefa3869644c93193c1d679d
 
     <div class=\"container\">
         <div class=\"well\">
-            <div class=\"row\">
-                <div class=\"col-md-2\">Capteur : </div>
-                <div class=\"col-md-2\">";
+            <!--parties communes a tout les capteurs-->
+            ";
+        // line 12
+        $this->env->loadTemplate("SmartCampusBundle:Smart:voirC.html.twig")->display($context);
         // line 13
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["capteur"]) ? $context["capteur"] : $this->getContext($context, "capteur")), "name"), "html", null, true);
-        echo "</div>
-            </div>
-            <br>
-            <div class=\"row\">
-                <div class=\"col-md-2\">Kind :</div>
-                <div class=\"col-md-2\">";
-        // line 18
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["capteur"]) ? $context["capteur"] : $this->getContext($context, "capteur")), "kind"), "html", null, true);
-        echo "</div>
-            </div>
-            <br>
-            <div class=\"row\">
-                <div class=\"col-md-2\">Frequency :</div>
-                <div class=\"col-md-2\">";
-        // line 23
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["capteur"]) ? $context["capteur"] : $this->getContext($context, "capteur")), "frequency"), "html", null, true);
-        echo "</div>
-            </div>
-            <br>
-            <div class=\"row\">
+        echo "            <div class=\"row\">
                 <div class=\"col-md-2\">Script :</div>
                 <div class=\"col-md-2\">";
-        // line 28
+        // line 15
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["capteur"]) ? $context["capteur"] : $this->getContext($context, "capteur")), "script"), "html", null, true);
         echo "</div>
             </div>
-        </div>
+            <!--proprietes des capteurs-->
+            ";
+        // line 18
+        $this->env->loadTemplate("SmartCampusBundle:Smart:voirProp.html.twig")->display($context);
+        // line 19
+        echo "        </div>
 
         <a href=\"";
-        // line 32
+        // line 21
         echo $this->env->getExtension('routing')->getPath("smartcampus_accueil");
         echo "\" class=\"btn\">
             Retour à l'accueil
         </a>
 
         <a href=\"";
-        // line 36
+        // line 25
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("smartcampus_modifierV", array("id" => $this->getAttribute((isset($context["capteur"]) ? $context["capteur"] : $this->getContext($context, "capteur")), "id"))), "html", null, true);
         echo "\" class=\"btn btn-primary\">
             Modifier
         </a>
 
         <input type=\"button\" value=\"Supprimer\" class=\"btn btn btn-danger\" onclick=\"suppr('";
-        // line 40
+        // line 29
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("smartcampus_supprimer", array("id" => $this->getAttribute((isset($context["capteur"]) ? $context["capteur"] : $this->getContext($context, "capteur")), "id"))), "html", null, true);
         echo "');\">
 
@@ -104,9 +90,9 @@ class __TwigTemplate_97a4de7d48f33fa05bfaaea6651420895c9aefa3869644c93193c1d679d
 \t
     <!-- Boite dialogue Modification capteur -->
     ";
-        // line 49
+        // line 38
         $this->env->loadTemplate("SmartCampusBundle:Smart:dialogue.html.twig")->display($context);
-        // line 50
+        // line 39
         echo "
 ";
     }
@@ -123,6 +109,6 @@ class __TwigTemplate_97a4de7d48f33fa05bfaaea6651420895c9aefa3869644c93193c1d679d
 
     public function getDebugInfo()
     {
-        return array (  110 => 50,  108 => 49,  96 => 40,  89 => 36,  82 => 32,  75 => 28,  67 => 23,  59 => 18,  51 => 13,  42 => 7,  39 => 6,  36 => 5,  29 => 3,);
+        return array (  96 => 39,  94 => 38,  82 => 29,  75 => 25,  68 => 21,  64 => 19,  62 => 18,  56 => 15,  52 => 13,  50 => 12,  42 => 7,  39 => 6,  36 => 5,  29 => 3,);
     }
 }

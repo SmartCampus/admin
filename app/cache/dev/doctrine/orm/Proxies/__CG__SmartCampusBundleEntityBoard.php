@@ -64,10 +64,10 @@ class Board extends \Smart\CampusBundle\Entity\Board implements \Doctrine\ORM\Pr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Smart\\CampusBundle\\Entity\\Board' . "\0" . 'id', '' . "\0" . 'Smart\\CampusBundle\\Entity\\Board' . "\0" . 'name');
+            return array('__isInitialized__', '' . "\0" . 'Smart\\CampusBundle\\Entity\\Board' . "\0" . 'id', '' . "\0" . 'Smart\\CampusBundle\\Entity\\Board' . "\0" . 'name', '' . "\0" . 'Smart\\CampusBundle\\Entity\\Board' . "\0" . 'physique');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Smart\\CampusBundle\\Entity\\Board' . "\0" . 'id', '' . "\0" . 'Smart\\CampusBundle\\Entity\\Board' . "\0" . 'name');
+        return array('__isInitialized__', '' . "\0" . 'Smart\\CampusBundle\\Entity\\Board' . "\0" . 'id', '' . "\0" . 'Smart\\CampusBundle\\Entity\\Board' . "\0" . 'name', '' . "\0" . 'Smart\\CampusBundle\\Entity\\Board' . "\0" . 'physique');
     }
 
     /**
@@ -208,6 +208,17 @@ class Board extends \Smart\CampusBundle\Entity\Board implements \Doctrine\ORM\Pr
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getName', array());
 
         return parent::getName();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPhysique()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhysique', array());
+
+        return parent::getPhysique();
     }
 
 }

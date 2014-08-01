@@ -48,6 +48,13 @@ class Capteur
      */
     private $frequency;
 
+    /**
+     * @var array
+     *
+     * @ORM\OneToMany(targetEntity="Smart\CampusBundle\Entity\Propriete", mappedBy="capteur", cascade={"refresh", "merge", "persist", "detach"})
+     * @ORM\JoinColumn(name="propriete_id", referencedColumnName="id", onDelete="SET NULL")
+     */
+    protected $propriete;
 
     /**
      * Get id
@@ -126,5 +133,15 @@ class Capteur
     public function getFrequency()
     {
         return $this->frequency;
+    }
+    
+    /**
+     * Get propriete
+     *
+     * @return array 
+     */
+    public function getPropriete()
+    {
+        return $this->propriete;
     }
 }
