@@ -32,8 +32,7 @@ class PhysiqueType extends AbstractType
                     return $er->createQueryBuilder('b')
                         ->orderBy('b.name', 'ASC');
                 },
-                'property' => 'name')
-            )
+                'property' => 'name'))
             ->add('pin',    'integer')
             ->add('endpoint',   new EndpointType());
         ;

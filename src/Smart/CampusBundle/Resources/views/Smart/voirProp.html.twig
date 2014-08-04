@@ -1,12 +1,23 @@
-<br>
-===============================================
-<br>
-<br>
 <div class="row">
     <div class="col-md-2">Proprietes :</div>
     <div class="col-md-2">
         {% for prop in capteur.propriete %}
-            <p>{{ prop.name }} : {{ prop.value }}</p>
+            <p>
+                {{ prop.name }} : {{ prop.value }}
+            </p>
         {% endfor %}
     </div>
+    <div class="col-md-3">
+        {% for prop in capteur.propriete %}
+            <p>
+                <input type="button" value="supp." class="btn btn btn-danger" onclick="suppr('{{ path('smartcampus_supprimerProp', {'id': prop.id, 'tag': kind}) }}');">
+            </p>
+        {% endfor %}
+        <a href="{{ path('smartcampus_ajouterProp', {'id': capteur.id, 'tag': kind}) }}" class="btn btn-primary">
+            Ajouter
+        </a>
+    </div>
 </div>
+
+<!-- Boite dialogue ajout propriete -->
+{% include "SmartCampusBundle:Smart:dialogue.html.twig" %}

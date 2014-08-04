@@ -37,8 +37,10 @@ class __TwigTemplate_9696fb7a9eab644d138f68b6b175ad7ff8677ba78357bbd015761ff9b18
     {
         // line 6
         echo "
-    <h1>Modification du capteur ";
+    <h1><span class=\"glyphicon glyphicon-home\" style=\"cursor: pointer;\" onclick=\"location.href='";
         // line 7
+        echo $this->env->getExtension('routing')->getPath("smartcampus_accueil");
+        echo "';\"></span> Modification du capteur ";
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["capteur"]) ? $context["capteur"] : $this->getContext($context, "capteur")), "name"), "html", null, true);
         echo "</h1>
 
@@ -87,16 +89,6 @@ class __TwigTemplate_9696fb7a9eab644d138f68b6b175ad7ff8677ba78357bbd015761ff9b18
           </div>
       </form>
     </div>
-\t
-    <a href=\"";
-        // line 31
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("smartcampus_voirP", array("id" => $this->getAttribute((isset($context["capteur"]) ? $context["capteur"] : $this->getContext($context, "capteur")), "id"))), "html", null, true);
-        echo "\" class=\"btn\">
-        Retour à ";
-        // line 32
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["capteur"]) ? $context["capteur"] : $this->getContext($context, "capteur")), "name"), "html", null, true);
-        echo "
-    </a>
 
 ";
     }
@@ -113,6 +105,6 @@ class __TwigTemplate_9696fb7a9eab644d138f68b6b175ad7ff8677ba78357bbd015761ff9b18
 
     public function getDebugInfo()
     {
-        return array (  97 => 32,  93 => 31,  82 => 23,  76 => 20,  72 => 19,  68 => 18,  62 => 15,  58 => 14,  54 => 13,  49 => 11,  42 => 7,  39 => 6,  36 => 5,  29 => 3,);
+        return array (  84 => 23,  78 => 20,  74 => 19,  70 => 18,  64 => 15,  60 => 14,  56 => 13,  51 => 11,  42 => 7,  39 => 6,  36 => 5,  29 => 3,);
     }
 }

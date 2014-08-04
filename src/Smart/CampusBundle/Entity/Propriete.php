@@ -3,6 +3,7 @@
 namespace Smart\CampusBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Propriete
@@ -97,5 +98,28 @@ class Propriete
     public function getValue()
     {
         return $this->value;
+    }
+    
+    /**
+     * Set capteur
+     *
+     * @param \stdClass $capteur
+     * @return Propriete
+     */
+    public function setCapteur($capteur)
+    {
+        $this->capteur = $capteur;
+
+        return $this;
+    }
+    
+    /**
+     * Get capteur
+     *
+     * @return array
+     */
+    public function getCapteur()
+    {
+        return $this->capteur;
     }
 }

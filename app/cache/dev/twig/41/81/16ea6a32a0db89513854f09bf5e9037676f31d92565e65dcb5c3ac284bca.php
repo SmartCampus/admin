@@ -36,9 +36,9 @@ class __TwigTemplate_418116ea6a32a0db89513854f09bf5e9037676f31d92565e65dcb5c3ac2
     public function block_body($context, array $blocks = array())
     {
         // line 6
-        echo "    <h1 onclick=\"location.href='";
+        echo "    <h1><span class=\"glyphicon glyphicon-home\" style=\"cursor: pointer;\" onclick=\"location.href='";
         echo $this->env->getExtension('routing')->getPath("smartcampus_accueil");
-        echo "';\">";
+        echo "';\"></span> ";
         echo twig_escape_filter($this->env, (isset($context["titre"]) ? $context["titre"] : $this->getContext($context, "titre")), "html", null, true);
         echo "</h1>
 
@@ -47,7 +47,7 @@ class __TwigTemplate_418116ea6a32a0db89513854f09bf5e9037676f31d92565e65dcb5c3ac2
         // line 9
         $this->env->loadTemplate("SmartCampusBundle:Smart:navigation.html.twig")->display($context);
         // line 10
-        echo "    
+        echo "    <br>
     <div class=\"container\">
         
         ";

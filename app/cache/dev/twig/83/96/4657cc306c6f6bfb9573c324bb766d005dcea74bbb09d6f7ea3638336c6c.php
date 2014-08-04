@@ -37,7 +37,10 @@ class __TwigTemplate_83964657cc306c6f6bfb9573c324bb766d005dcea74bbb09d6f7ea36383
     {
         // line 6
         echo "
-    <h1>Ajout d'un capteur Physique</h1>
+    <h1><span class=\"glyphicon glyphicon-home\" style=\"cursor: pointer;\" onclick=\"location.href='";
+        // line 7
+        echo $this->env->getExtension('routing')->getPath("smartcampus_accueil");
+        echo "';\"></span> Ajout d'un capteur Physique</h1>
 
 \t<!--formulaire d'ajout d'un capteur physique-->
     <div class=\"well container\">
@@ -140,13 +143,6 @@ class __TwigTemplate_83964657cc306c6f6bfb9573c324bb766d005dcea74bbb09d6f7ea36383
           </div>
       </form>
     </div>
-\t
-    <a href=\"";
-        // line 51
-        echo $this->env->getExtension('routing')->getPath("smartcampus_accueil");
-        echo "\" class=\"btn\">
-        Retour à l'accueil
-    </a>
 
 ";
     }
@@ -163,6 +159,6 @@ class __TwigTemplate_83964657cc306c6f6bfb9573c324bb766d005dcea74bbb09d6f7ea36383
 
     public function getDebugInfo()
     {
-        return array (  146 => 51,  135 => 43,  129 => 40,  125 => 39,  121 => 38,  115 => 35,  111 => 34,  107 => 33,  101 => 30,  97 => 29,  93 => 28,  87 => 25,  83 => 24,  79 => 23,  73 => 20,  69 => 19,  65 => 18,  59 => 15,  55 => 14,  51 => 13,  46 => 11,  39 => 6,  36 => 5,  29 => 3,);
+        return array (  138 => 43,  132 => 40,  128 => 39,  124 => 38,  118 => 35,  114 => 34,  110 => 33,  104 => 30,  100 => 29,  96 => 28,  90 => 25,  86 => 24,  82 => 23,  76 => 20,  72 => 19,  68 => 18,  62 => 15,  58 => 14,  54 => 13,  49 => 11,  42 => 7,  39 => 6,  36 => 5,  29 => 3,);
     }
 }

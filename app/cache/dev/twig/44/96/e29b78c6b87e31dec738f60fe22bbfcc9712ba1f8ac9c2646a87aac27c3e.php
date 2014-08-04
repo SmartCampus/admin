@@ -37,7 +37,10 @@ class __TwigTemplate_4496e29b78c6b87e31dec738f60fe22bbfcc9712ba1f8ac9c2646a87aac
     {
         // line 6
         echo "
-    <h1>Ajout d'un capteur Virtuel</h1>
+    <h1><span class=\"glyphicon glyphicon-home\" style=\"cursor: pointer;\" onclick=\"location.href='";
+        // line 7
+        echo $this->env->getExtension('routing')->getPath("smartcampus_accueil");
+        echo "';\"></span> Ajout d'un capteur Virtuel</h1>
 
     <!--formulaire d'ajout d'un capteur virtuel-->
 \t<div class=\"well container\">
@@ -142,13 +145,6 @@ class __TwigTemplate_4496e29b78c6b87e31dec738f60fe22bbfcc9712ba1f8ac9c2646a87aac
           </div>
       </form>
     </div>
-\t
-    <a href=\"";
-        // line 71
-        echo $this->env->getExtension('routing')->getPath("smartcampus_accueil");
-        echo "\" class=\"btn\">
-        Retour à l'accueil
-    </a>
 
 ";
     }
@@ -165,6 +161,6 @@ class __TwigTemplate_4496e29b78c6b87e31dec738f60fe22bbfcc9712ba1f8ac9c2646a87aac
 
     public function getDebugInfo()
     {
-        return array (  148 => 71,  137 => 63,  101 => 30,  97 => 29,  93 => 28,  87 => 25,  83 => 24,  79 => 23,  73 => 20,  69 => 19,  65 => 18,  59 => 15,  55 => 14,  51 => 13,  46 => 11,  39 => 6,  36 => 5,  29 => 3,);
+        return array (  140 => 63,  104 => 30,  100 => 29,  96 => 28,  90 => 25,  86 => 24,  82 => 23,  76 => 20,  72 => 19,  68 => 18,  62 => 15,  58 => 14,  54 => 13,  49 => 11,  42 => 7,  39 => 6,  36 => 5,  29 => 3,);
     }
 }

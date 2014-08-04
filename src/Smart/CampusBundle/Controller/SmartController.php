@@ -16,6 +16,8 @@ use Smart\CampusBundle\Entity\Board;
 use Smart\CampusBundle\Form\BoardType;
 use Smart\CampusBundle\Entity\Endpoint;
 use Smart\CampusBundle\Form\EndpointType;
+use Smart\CampusBundle\Entity\Propriete;
+use Smart\CampusBundle\Form\ProprieteType;
 
 /** Controller du SmartCampus */
 class SmartController extends Controller
@@ -41,7 +43,7 @@ class SmartController extends Controller
         return $this->render('SmartCampusBundle:Smart:index.html.twig', array('tag' => $tag, 'boardAll' => $boardAll, 'virAll' => $virAll, 'phyAll' => $phyAll));
     }
 
-//-----------------------------------------------------------------------------------------------------
+// AFFICHAGE -----------------------------------------------------------------------------------------------------
     
     /** Afiche une Board */
 	public function voirBAction($id)
@@ -85,7 +87,7 @@ class SmartController extends Controller
         return $this->render('SmartCampusBundle:Smart:voirP.html.twig', array('capteur' => $cap));
 	}
 	
-//-----------------------------------------------------------------------------------------------------
+// AJOUT -----------------------------------------------------------------------------------------------------
     
     /** Ajouter une board */
 	public function ajouterBAction()
@@ -156,8 +158,48 @@ class SmartController extends Controller
         
         return $this->render('SmartCampusBundle:Smart:ajoutP.html.twig', array('form' => $form->createView(),));
 	}
+    
+    /** Ajouter une propriete a un capteur */
+	public function ajouterPropAction($id)
+	{
+        $prop = new Propriete();
+        $tag = $this->getRequest()->query->get('tag');
+        $cap = $this->getDoctrine()
+                ->getRepository('SmartCampusBundle:Virtuel')
+                ->find($id);
+        
+        if($cap === null)
+        {
+            $cap = $this->getDoctrine()
+                ->getRepository('SmartCampusBundle:Physique')
+                ->find($id);
+            if($cap === null)
+            {
+                throw $this->createNotFoundException('Capteur[id='.$id.'] inexistant.');
+            }
+        }
+        $prop->setCapteur($cap);
+        $form = $this->createForm(new ProprieteType, $prop);
+            
+        $request = $this->get('request');
+        if($request->getMethod() == 'POST'){
+            $form->bind($request);
+            
+            if($form->isValid()){
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($prop);
+                $em->flush();
+                
+                $this->get('session')->getFlashBag()->add('info', 'Nouvelle propriété ajouté avec succès');
+                
+                return $this->redirect($this->generateUrl('smartcampus_voir'.$tag, array('id' => $id)));
+            }
+        }
+        
+        return $this->render('SmartCampusBundle:Smart:ajoutProp.html.twig', array('form' => $form->createView(),));
+	}
 
-//-----------------------------------------------------------------------------------------------------	
+// JSON -----------------------------------------------------------------------------------------------------	
     
     /** Encoder en JSON */
     private function encodeJson(Capteur $cap)
@@ -166,7 +208,7 @@ class SmartController extends Controller
         $response->headers->set('Content-Type', 'application/json');
         return $response;
     }
-//-----------------------------------------------------------------------------------------------------
+// MODIFICATION -----------------------------------------------------------------------------------------------------
     
     /** Modifier les infos d'un capteur Virtuel */
 	public function modifierVAction($id)
@@ -239,7 +281,7 @@ class SmartController extends Controller
         return $this->render('SmartCampusBundle:Smart:modifP.html.twig', array('form' => $form->createView(), 'capteur'=>$phy,));
 	}
 	
-//-----------------------------------------------------------------------------------------------------
+// SUPPRESSION -----------------------------------------------------------------------------------------------------
     
     /** Supprimer un capteur de la BD */
 	public function supprimerAction($id)
@@ -279,5 +321,37 @@ class SmartController extends Controller
         $em->flush();
 
         return $this->redirect($this->generateUrl('smartcampus_accueil'));
+	}
+    
+    /** Supprimer une propriete */
+	public function supprimerPropAction($id)
+	{
+        $tag = $this->getRequest()->query->get('tag');
+        $prop = $this->getDoctrine()
+                ->getRepository('SmartCampusBundle:Propriete')
+                ->find($id);
+        if($prop === null)
+        {
+            throw $this->createNotFoundException('Propriété [id='.$id.'] inexistant.');
+        }
+        
+        $idCap = $prop->getCapteur()->getId();
+            
+        $form = $this->createFormBuilder()->getForm();
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST')
+        {
+          $form->bind($request);
+          if($form->isNotValid())
+          {
+            throw $this->createNotFoundException('ERREUR : formulaire.');
+          }
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($prop);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('smartcampus_voir'.$tag, array('id' => $idCap)));
 	}
 }

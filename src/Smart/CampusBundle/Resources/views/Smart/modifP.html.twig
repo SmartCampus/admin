@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    <h1>Modification du capteur {{ capteur.name }}</h1>
+    <h1><span class="glyphicon glyphicon-home" style="cursor: pointer;" onclick="location.href='{{ path('smartcampus_accueil') }}';"></span> Modification du capteur {{ capteur.name }}</h1>
 
     <!--formulaire d'edition d'un capteur physique-->
     <div class="well container">
@@ -27,9 +27,5 @@
           </div>
       </form>
     </div>
-	
-    <a href="{{ path('smartcampus_voirP', {'id': capteur.id}) }}" class="btn">
-        Retour à {{ capteur.name }}
-    </a>
 
 {% endblock %}

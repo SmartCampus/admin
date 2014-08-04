@@ -3,11 +3,11 @@
 {% block title %}{{ parent() }} - Index{% endblock %}
 
 {% block body %}
-    <h1 onclick="location.href='{{ path('smartcampus_accueil') }}';">{{ titre }}</h1>
+    <h1><span class="glyphicon glyphicon-home" style="cursor: pointer;" onclick="location.href='{{ path('smartcampus_accueil') }}';"></span> {{ titre }}</h1>
 
     <!-- Navigation -->
     {% include "SmartCampusBundle:Smart:navigation.html.twig" %}
-    
+    <br>
     <div class="container">
         
         {% if (tag == "All") or (tag == NULL) %}

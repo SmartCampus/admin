@@ -1,0 +1,31 @@
+{% extends "SmartCampusBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Ajout{% endblock %}
+
+{% block body %}
+
+    <h1><span class="glyphicon glyphicon-home" style="cursor: pointer;" onclick="location.href='{{ path('smartcampus_accueil') }}';"></span> Ajout d'une propriété</h1>
+
+	<!--formulaire d'ajout d'une board-->
+    <div class="well container">
+      <form class="form-horizontal" role="form" method="post" {{ form_enctype(form) }}>
+          <div class="form-group">
+              <div class="col-md-2">{{ form_label(form.name) }}</div>
+              <div class="col-md-2">{{ form_widget(form.name) }}</div>
+              <div class="col-md-3">{{ form_errors(form.name) }}</div>
+          </div>
+          <div class="form-group">
+              <div class="col-md-2">{{ form_label(form.value) }}</div>
+              <div class="col-md-2">{{ form_widget(form.value) }}</div>
+              <div class="col-md-3">{{ form_errors(form.value) }}</div>
+          </div>
+          <div class="form-group">
+              {{ form_rest(form) }}
+          </div>
+          <div class="form-group">
+              <input type="submit" class="btn btn-primary"/>
+          </div>
+      </form>
+    </div>
+
+{% endblock %}

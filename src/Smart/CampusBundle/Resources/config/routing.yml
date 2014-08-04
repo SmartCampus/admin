@@ -20,6 +20,12 @@ smartcampus_voirP:
     requirements :
         id: \d+
 
+smartcampus_ajouterProp:
+    path:  /ajouterProp/{id}
+    defaults: { _controller: SmartCampusBundle:Smart:ajouterProp }
+    requirements :
+        id: \d+
+    
 smartcampus_ajouterB:
     path:  /ajouterB
     defaults: { _controller: SmartCampusBundle:Smart:ajouterB }
@@ -47,3 +53,7 @@ smartcampus_modifierP:
 smartcampus_supprimer:
     path:  /supprimer/{id}
     defaults: { _controller: SmartCampusBundle:Smart:supprimer }
+    
+smartcampus_supprimerProp:
+    path:  /supprimerProp/{id}
+    defaults: { _controller: SmartCampusBundle:Smart:supprimerProp }

@@ -9,7 +9,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * Capteur
  *
- * @ORM\MappedSuperclass(repositoryClass="Smart\CampusBundle\Entity\PhysiqueRepository")
+ * @ORM\MappedSuperclass(repositoryClass="Smart\CampusBundle\Entity\CapteurRepository")
  * @UniqueEntity("id")
  * @UniqueEntity("name")
  */
@@ -51,8 +51,8 @@ class Capteur
     /**
      * @var array
      *
-     * @ORM\OneToMany(targetEntity="Smart\CampusBundle\Entity\Propriete", mappedBy="capteur", cascade={"refresh", "merge", "persist", "detach"})
-     * @ORM\JoinColumn(name="propriete_id", referencedColumnName="id", onDelete="SET NULL")
+     * @ORM\OneToMany(targetEntity="Smart\CampusBundle\Entity\Propriete", mappedBy="capteur", cascade={"all"})
+     * @ORM\JoinColumn(name="propriete_id", referencedColumnName="id")
      */
     protected $propriete;
 

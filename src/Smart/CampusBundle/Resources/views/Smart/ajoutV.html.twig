@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    <h1>Ajout d'un capteur Virtuel</h1>
+    <h1><span class="glyphicon glyphicon-home" style="cursor: pointer;" onclick="location.href='{{ path('smartcampus_accueil') }}';"></span> Ajout d'un capteur Virtuel</h1>
 
     <!--formulaire d'ajout d'un capteur virtuel-->
 	<div class="well container">
@@ -67,9 +67,5 @@
           </div>
       </form>
     </div>
-	
-    <a href="{{ path('smartcampus_accueil') }}" class="btn">
-        Retour à l'accueil
-    </a>
 
 {% endblock %}

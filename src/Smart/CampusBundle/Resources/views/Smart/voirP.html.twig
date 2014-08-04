@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    <h1>Visualisation de {{ capteur.name }}</h1>
+    <h1><span class="glyphicon glyphicon-home" style="cursor: pointer;" onclick="location.href='{{ path('smartcampus_accueil') }}';"></span> Visualisation de {{ capteur.name }}</h1>
 
     <div class="container">
         <div class="well">
@@ -19,13 +19,12 @@
                 <div class="col-md-2">Endpoint :</div>
                 <div class="col-md-2">{{ capteur.endpoint.ip }}:{{ capteur.endpoint.port }}</div>
             </div>
+        </div>
+        <div class="well">
             <!--proprietes des capteurs-->
+            {% set kind = 'P' %}
             {% include "SmartCampusBundle:Smart:voirProp.html.twig" %}
         </div>
-
-        <a href="{{ path('smartcampus_accueil') }}" class="btn">
-            Retour à l'accueil
-        </a>
 
         <a href="{{ path('smartcampus_modifierP', {'id': capteur.id}) }}" class="btn btn-primary">
             Modifier
@@ -35,7 +34,7 @@
 
         <div id="supp-message" title="Suppression" style="visibility: hidden">            
           <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
-            <p>Voulez-vous vraiment supprimer ce capteur ?</p>
+            <p>Voulez-vous vraiment supprimer cet élément ?</p>
         </div>
     </div>
 	
