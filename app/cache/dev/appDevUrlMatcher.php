@@ -150,14 +150,9 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'smartcampus_voirB')), array (  '_controller' => 'Smart\\CampusBundle\\Controller\\SmartController::voirBAction',));
             }
 
-            // smartcampus_voirV
-            if (0 === strpos($pathinfo, '/smartcampus/virtuel') && preg_match('#^/smartcampus/virtuel/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'smartcampus_voirV')), array (  '_controller' => 'Smart\\CampusBundle\\Controller\\SmartController::voirVAction',));
-            }
-
-            // smartcampus_voirP
-            if (0 === strpos($pathinfo, '/smartcampus/physique') && preg_match('#^/smartcampus/physique/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'smartcampus_voirP')), array (  '_controller' => 'Smart\\CampusBundle\\Controller\\SmartController::voirPAction',));
+            // smartcampus_voir
+            if (0 === strpos($pathinfo, '/smartcampus/capteur') && preg_match('#^/smartcampus/capteur/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'smartcampus_voir')), array (  '_controller' => 'Smart\\CampusBundle\\Controller\\SmartController::voirAction',));
             }
 
             if (0 === strpos($pathinfo, '/smartcampus/ajouter')) {
@@ -183,17 +178,9 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             }
 
-            if (0 === strpos($pathinfo, '/smartcampus/modifier')) {
-                // smartcampus_modifierV
-                if (0 === strpos($pathinfo, '/smartcampus/modifierV') && preg_match('#^/smartcampus/modifierV/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'smartcampus_modifierV')), array (  '_controller' => 'Smart\\CampusBundle\\Controller\\SmartController::modifierVAction',));
-                }
-
-                // smartcampus_modifierP
-                if (0 === strpos($pathinfo, '/smartcampus/modifierP') && preg_match('#^/smartcampus/modifierP/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'smartcampus_modifierP')), array (  '_controller' => 'Smart\\CampusBundle\\Controller\\SmartController::modifierPAction',));
-                }
-
+            // smartcampus_modifier
+            if (0 === strpos($pathinfo, '/smartcampus/modifier') && preg_match('#^/smartcampus/modifier/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'smartcampus_modifier')), array (  '_controller' => 'Smart\\CampusBundle\\Controller\\SmartController::modifierAction',));
             }
 
             if (0 === strpos($pathinfo, '/smartcampus/s')) {

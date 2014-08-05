@@ -38,7 +38,7 @@ class __TwigTemplate_c56a9b7aa830095bbfa8d32819fe404c017621dcd161460e87855cedfe8
         foreach ($context['_seq'] as $context["_key"] => $context["cap"]) {
             // line 17
             echo "                    <tr class=\"lien\" style=\"cursor: pointer;\" onclick=\"location.href='";
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("smartcampus_voirV", array("id" => $this->getAttribute((isset($context["cap"]) ? $context["cap"] : $this->getContext($context, "cap")), "id"))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("smartcampus_voir", array("id" => $this->getAttribute((isset($context["cap"]) ? $context["cap"] : $this->getContext($context, "cap")), "id"))), "html", null, true);
             echo "';\">
                         <td>
                             ";
@@ -83,7 +83,7 @@ class __TwigTemplate_c56a9b7aa830095bbfa8d32819fe404c017621dcd161460e87855cedfe8
         foreach ($context['_seq'] as $context["_key"] => $context["cap"]) {
             // line 39
             echo "                    <tr class=\"lien\" style=\"cursor: pointer;\" onclick=\"location.href='";
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("smartcampus_voirP", array("id" => $this->getAttribute((isset($context["cap"]) ? $context["cap"] : $this->getContext($context, "cap")), "id"))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("smartcampus_voir", array("id" => $this->getAttribute((isset($context["cap"]) ? $context["cap"] : $this->getContext($context, "cap")), "id"))), "html", null, true);
             echo "';\">
                         <td>
                             ";

@@ -1,9 +1,10 @@
+# index #########################################################
+
 smartcampus_accueil:
     path:  /
     defaults: { _controller: SmartCampusBundle:Smart:index }
 
-
-
+# Visualisation #################################################
 
 smartcampus_voirB:
     path:  /board/{id}
@@ -11,27 +12,20 @@ smartcampus_voirB:
     requirements :
         id: \d+
         
-smartcampus_voirV:
-    path:  /virtuel/{id}
-    defaults: { _controller: SmartCampusBundle:Smart:voirV }
+smartcampus_voir:
+    path:  /capteur/{id}
+    defaults: { _controller: SmartCampusBundle:Smart:voir }
     requirements :
         id: \d+
 
-smartcampus_voirP:
-    path:  /physique/{id}
-    defaults: { _controller: SmartCampusBundle:Smart:voirP }
-    requirements :
-        id: \d+
-
-
-
+# Ajout ##########################################################
 
 smartcampus_ajouterProp:
     path:  /ajouterProp/{id}
     defaults: { _controller: SmartCampusBundle:Smart:ajouterProp }
     requirements :
         id: \d+
-    
+        
 smartcampus_ajouterB:
     path:  /ajouterB
     defaults: { _controller: SmartCampusBundle:Smart:ajouterB }
@@ -44,45 +38,34 @@ smartcampus_ajouterP:
     path:  /ajouterP
     defaults: { _controller: SmartCampusBundle:Smart:ajouterP }
 
+# Modification ##################################################
 
-
-
-
-smartcampus_modifierV:
-    path:  /modifierV/{id}
-    defaults: { _controller: SmartCampusBundle:Smart:modifierV }
-    requirements:
-        id: \d+
-        
-smartcampus_modifierP:
-    path:  /modifierP/{id}
-    defaults: { _controller: SmartCampusBundle:Smart:modifierP }
+smartcampus_modifier:
+    path:  /modifier/{id}
+    defaults: { _controller: SmartCampusBundle:Smart:modifier }
     requirements:
         id: \d+
 
-
-
-
+# Suppression ###################################################
 
 smartcampus_supprimer:
     path:  /supprimer/{id}
     defaults: { _controller: SmartCampusBundle:Smart:supprimer }
     requirements:
         id: \d+
-    
+        
 smartcampus_supprimerProp:
     path:  /supprimerProp/{id}
     defaults: { _controller: SmartCampusBundle:Smart:supprimerProp }
     requirements:
         id: \d+
 
-
-
+# Json #########################################################
 
 smartcampus_sensors:
     path:  /sensors
     defaults: { _controller: SmartCampusBundle:Smart:sensors }
-
+    
 smartcampus_sensor:
     path:  /sensors/{name}
     defaults: { _controller: SmartCampusBundle:Smart:sensor }
