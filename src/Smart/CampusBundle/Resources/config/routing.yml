@@ -79,8 +79,15 @@ smartcampus_supprimerProp:
 
 
 
-smartcampus_sensor:
-    path:  /sensor
-    defaults: { _controller: SmartCampusBundle:Smart:sensor }
+smartcampus_sensors:
+    path:  /sensors
+    defaults: { _controller: SmartCampusBundle:Smart:sensors }
+
+smartcampus_sensorsV:
+    path:  /sensorsV/{name}
+    defaults: { _controller: SmartCampusBundle:Smart:sensorsV }
     
+smartcampus_sensorsP:
+    path:  /sensorsP/{name}
+    defaults: { _controller: SmartCampusBundle:Smart:sensorsP }
     

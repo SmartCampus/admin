@@ -4,6 +4,7 @@ namespace Smart\CampusBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 use Smart\CampusBundle\Entity\Capteur;
 use Smart\CampusBundle\Entity\Virtuel;
@@ -349,7 +350,7 @@ class SmartController extends Controller
     // JSON -----------------------------------------------------------------------------------------------------	
     
     /** Afficher la liste des capteurs */
-    public function sensorAction()
+    public function sensorsAction()
     {
         $virAll = $this->getDoctrine()
                 ->getRepository('SmartCampusBundle:Virtuel')
@@ -359,19 +360,70 @@ class SmartController extends Controller
                 ->getRepository('SmartCampusBundle:Physique')
                 ->findAll();
         
-        $sensor = array();
         $cap = array();
+        $res = array();
+        $response = new JsonResponse();
         
         foreach($virAll as $vir){
             $cap = array('name' => $vir->getName());
-            $sensor = array($sensor+$cap);
+            array_push($res, $cap);
         }
-        
+
         foreach($phyAll as $phy){
             $cap = array('name' => $phy->getName());
-            $sensor = array($sensor+$cap);
+            array_push($res, $cap);
         }
-        $response = new Response(json_encode($sensor));
+        
+        $response->setData(array('sensor' => $res));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
+    
+    /** Afficher les details d'un capteur virtuel */
+    public function sensorsVAction($name)
+    {
+        $vir = $this->getDoctrine()
+                ->getRepository('SmartCampusBundle:Virtuel')
+                ->findOneByName($name);
+        
+        if($vir === null)
+        {
+            throw $this->createNotFoundException('Capteur[name='.$name.'] inexistant.');
+        }
+        
+        $response = new JsonResponse();
+        
+        $cap = array('name' => $vir->getName(),
+                    'kind' => $vir->getKind(),
+                    'frequency' => $vir->getFrequency(),
+                    'script' => $vir->getScript());
+        
+        $response->setData(array('sensor' => $cap));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
+    
+    /** Afficher les details d'un capteur physique */
+    public function sensorsPAction($name)
+    {
+        $phy = $this->getDoctrine()
+                ->getRepository('SmartCampusBundle:Physique')
+                ->findOneByName($name);
+        
+        if($phy === null)
+        {
+            throw $this->createNotFoundException('Capteur[name='.$name.'] inexistant.');
+        }
+        
+        $response = new JsonResponse();
+        
+        $cap = array('name' => $phy->getName(),
+                    'kind' => $phy->getKind(),
+                    'frequency' => $phy->getFrequency(),
+                    'script' => $phy->getBoard(),
+                    'script' => $phy->getEndpoint());
+        
+        $response->setData(array('sensor' => $cap));
         $response->headers->set('Content-Type', 'application/json');
         return $response;
     }

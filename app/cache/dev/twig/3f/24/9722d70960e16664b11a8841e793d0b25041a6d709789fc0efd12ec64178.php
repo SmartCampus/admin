@@ -93,7 +93,17 @@ class __TwigTemplate_3f249722d70960e16664b11a8841e793d0b25041a6d709789fc0efd12ec
         // line 33
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("smartcampus_supprimer", array("id" => $this->getAttribute((isset($context["capteur"]) ? $context["capteur"] : $this->getContext($context, "capteur")), "id"))), "html", null, true);
         echo "');\">
-
+        <br>
+        <br>
+        <a href=\"";
+        // line 36
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("smartcampus_sensorsP", array("name" => $this->getAttribute((isset($context["capteur"]) ? $context["capteur"] : $this->getContext($context, "capteur")), "name"))), "html", null, true);
+        echo "\" class=\"btn btn-info\">
+            smartcampus/sensors/";
+        // line 37
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["capteur"]) ? $context["capteur"] : $this->getContext($context, "capteur")), "name"), "html", null, true);
+        echo "
+        </a>
         <div id=\"supp-message\" title=\"Suppression\" style=\"visibility: hidden\">            
           <span class=\"ui-icon ui-icon-circle-check\" style=\"float:left; margin:0 7px 50px 0;\"></span>
             <p>Voulez-vous vraiment supprimer cet élément ?</p>
@@ -102,9 +112,9 @@ class __TwigTemplate_3f249722d70960e16664b11a8841e793d0b25041a6d709789fc0efd12ec
 \t
     <!-- Boite dialogue Modification capteur -->
     ";
-        // line 42
+        // line 46
         $this->env->loadTemplate("SmartCampusBundle:Smart:dialogue.html.twig")->display($context);
-        // line 43
+        // line 47
         echo "
 ";
     }
@@ -121,6 +131,6 @@ class __TwigTemplate_3f249722d70960e16664b11a8841e793d0b25041a6d709789fc0efd12ec
 
     public function getDebugInfo()
     {
-        return array (  108 => 43,  106 => 42,  94 => 33,  87 => 29,  83 => 27,  80 => 26,  78 => 25,  68 => 20,  58 => 15,  54 => 13,  52 => 12,  42 => 7,  39 => 6,  36 => 5,  29 => 3,);
+        return array (  118 => 47,  116 => 46,  104 => 37,  100 => 36,  94 => 33,  87 => 29,  83 => 27,  80 => 26,  78 => 25,  68 => 20,  58 => 15,  54 => 13,  52 => 12,  42 => 7,  39 => 6,  36 => 5,  29 => 3,);
     }
 }
