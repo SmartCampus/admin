@@ -13,7 +13,7 @@
                 <input type="button" value="supp." class="btn btn btn-danger" onclick="suppr('{{ path('smartcampus_supprimerProp', {'id': prop.id, 'tag': kind}) }}');">
             </p>
         {% endfor %}
-        <a href="{{ path('smartcampus_ajouterProp', {'id': capteur.id, 'tag': kind}) }}" class="btn btn-primary">
+        <a href="{{ path('smartcampus_ajouterProp', {'id': capteur.id, 'tag': kind}) }}" class="btn btn-success">
             Ajouter
         </a>
     </div>

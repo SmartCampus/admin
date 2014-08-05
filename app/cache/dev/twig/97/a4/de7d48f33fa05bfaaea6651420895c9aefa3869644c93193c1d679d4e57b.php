@@ -63,19 +63,22 @@ class __TwigTemplate_97a4de7d48f33fa05bfaaea6651420895c9aefa3869644c93193c1d679d
             <!--proprietes des capteurs-->
             ";
         // line 20
-        $this->env->loadTemplate("SmartCampusBundle:Smart:voirProp.html.twig")->display($context);
+        $context["kind"] = "V";
         // line 21
+        echo "            ";
+        $this->env->loadTemplate("SmartCampusBundle:Smart:voirProp.html.twig")->display($context);
+        // line 22
         echo "        </div>
 
         <a href=\"";
-        // line 23
+        // line 24
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("smartcampus_modifierV", array("id" => $this->getAttribute((isset($context["capteur"]) ? $context["capteur"] : $this->getContext($context, "capteur")), "id"))), "html", null, true);
         echo "\" class=\"btn btn-primary\">
             Modifier
         </a>
 
         <input type=\"button\" value=\"Supprimer\" class=\"btn btn btn-danger\" onclick=\"suppr('";
-        // line 27
+        // line 28
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("smartcampus_supprimer", array("id" => $this->getAttribute((isset($context["capteur"]) ? $context["capteur"] : $this->getContext($context, "capteur")), "id"))), "html", null, true);
         echo "');\">
 
@@ -87,9 +90,9 @@ class __TwigTemplate_97a4de7d48f33fa05bfaaea6651420895c9aefa3869644c93193c1d679d
 \t
     <!-- Boite dialogue Modification capteur -->
     ";
-        // line 36
-        $this->env->loadTemplate("SmartCampusBundle:Smart:dialogue.html.twig")->display($context);
         // line 37
+        $this->env->loadTemplate("SmartCampusBundle:Smart:dialogue.html.twig")->display($context);
+        // line 38
         echo "
 ";
     }
@@ -106,6 +109,6 @@ class __TwigTemplate_97a4de7d48f33fa05bfaaea6651420895c9aefa3869644c93193c1d679d
 
     public function getDebugInfo()
     {
-        return array (  93 => 37,  91 => 36,  79 => 27,  72 => 23,  68 => 21,  66 => 20,  58 => 15,  54 => 13,  52 => 12,  42 => 7,  39 => 6,  36 => 5,  29 => 3,);
+        return array (  96 => 38,  94 => 37,  82 => 28,  75 => 24,  71 => 22,  68 => 21,  66 => 20,  58 => 15,  54 => 13,  52 => 12,  42 => 7,  39 => 6,  36 => 5,  29 => 3,);
     }
 }

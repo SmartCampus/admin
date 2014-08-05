@@ -88,7 +88,7 @@ class __TwigTemplate_1a1a2a67d21528e7bd6bea0f8f52a65707cb3f355546f91616dae1fafe2
 <a href=\"";
         // line 39
         echo $this->env->getExtension('routing')->getPath("smartcampus_ajouterP");
-        echo "\" class=\"btn btn-primary bouton-accueil\">
+        echo "\" class=\"btn btn-success bouton-accueil\">
     + Capteur Physique
 </a>
 ";

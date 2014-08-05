@@ -199,15 +199,6 @@ class SmartController extends Controller
         return $this->render('SmartCampusBundle:Smart:ajoutProp.html.twig', array('form' => $form->createView(),));
 	}
 
-// JSON -----------------------------------------------------------------------------------------------------	
-    
-    /** Encoder en JSON */
-    private function encodeJson(Capteur $cap)
-    {
-        $response = new Response(json_encode(array('name' => $cap->getName())));
-        $response->headers->set('Content-Type', 'application/json');
-        return $response;
-    }
 // MODIFICATION -----------------------------------------------------------------------------------------------------
     
     /** Modifier les infos d'un capteur Virtuel */
@@ -354,4 +345,34 @@ class SmartController extends Controller
 
         return $this->redirect($this->generateUrl('smartcampus_voir'.$tag, array('id' => $idCap)));
 	}
+    
+    // JSON -----------------------------------------------------------------------------------------------------	
+    
+    /** Afficher la liste des capteurs */
+    public function sensorAction()
+    {
+        $virAll = $this->getDoctrine()
+                ->getRepository('SmartCampusBundle:Virtuel')
+                ->findAll();
+        
+        $phyAll = $this->getDoctrine()
+                ->getRepository('SmartCampusBundle:Physique')
+                ->findAll();
+        
+        $sensor = array();
+        $cap = array();
+        
+        foreach($virAll as $vir){
+            $cap = array('name' => $vir->getName());
+            $sensor = array($sensor+$cap);
+        }
+        
+        foreach($phyAll as $phy){
+            $cap = array('name' => $phy->getName());
+            $sensor = array($sensor+$cap);
+        }
+        $response = new Response(json_encode($sensor));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
 }

@@ -61,7 +61,7 @@ class __TwigTemplate_65810d179c1de99cc8b6bc66f1def9ffc7cfcd7d5c2041b6fec555e8b9b
         // line 16
         echo "        <a href=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("smartcampus_ajouterProp", array("id" => $this->getAttribute((isset($context["capteur"]) ? $context["capteur"] : $this->getContext($context, "capteur")), "id"), "tag" => (isset($context["kind"]) ? $context["kind"] : $this->getContext($context, "kind")))), "html", null, true);
-        echo "\" class=\"btn btn-primary\">
+        echo "\" class=\"btn btn-success\">
             Ajouter
         </a>
     </div>

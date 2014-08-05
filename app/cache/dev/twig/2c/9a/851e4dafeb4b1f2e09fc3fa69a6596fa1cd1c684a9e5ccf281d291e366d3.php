@@ -37,8 +37,10 @@ class __TwigTemplate_2c9a851e4dafeb4b1f2e09fc3fa69a6596fa1cd1c684a9e5ccf281d291e
     {
         // line 6
         echo "
-    <h1>Modification du capteur ";
+    <h1><span class=\"glyphicon glyphicon-home\" style=\"cursor: pointer;\" onclick=\"location.href='";
         // line 7
+        echo $this->env->getExtension('routing')->getPath("smartcampus_accueil");
+        echo "';\"></span> Modification du capteur ";
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["capteur"]) ? $context["capteur"] : $this->getContext($context, "capteur")), "name"), "html", null, true);
         echo "</h1>
 
@@ -113,20 +115,10 @@ class __TwigTemplate_2c9a851e4dafeb4b1f2e09fc3fa69a6596fa1cd1c684a9e5ccf281d291e
         echo "
           </div>
           <div class=\"form-group\">
-              <input type=\"submit\" class=\"btn btn-primary\"/>
+              <input type=\"submit\" class=\"btn btn-success\"/>
           </div>
       </form>
     </div>
-\t
-    <a href=\"";
-        // line 61
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("smartcampus_voirV", array("id" => $this->getAttribute((isset($context["capteur"]) ? $context["capteur"] : $this->getContext($context, "capteur")), "id"))), "html", null, true);
-        echo "\" class=\"btn\">
-        Retour à ";
-        // line 62
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["capteur"]) ? $context["capteur"] : $this->getContext($context, "capteur")), "name"), "html", null, true);
-        echo "
-    </a>
 
 ";
     }
@@ -143,6 +135,6 @@ class __TwigTemplate_2c9a851e4dafeb4b1f2e09fc3fa69a6596fa1cd1c684a9e5ccf281d291e
 
     public function getDebugInfo()
     {
-        return array (  127 => 62,  123 => 61,  112 => 53,  76 => 20,  72 => 19,  68 => 18,  62 => 15,  58 => 14,  54 => 13,  49 => 11,  42 => 7,  39 => 6,  36 => 5,  29 => 3,);
+        return array (  114 => 53,  78 => 20,  74 => 19,  70 => 18,  64 => 15,  60 => 14,  56 => 13,  51 => 11,  42 => 7,  39 => 6,  36 => 5,  29 => 3,);
     }
 }

@@ -196,15 +196,23 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             }
 
-            if (0 === strpos($pathinfo, '/smartcampus/supprimer')) {
-                // smartcampus_supprimer
-                if (preg_match('#^/smartcampus/supprimer/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'smartcampus_supprimer')), array (  '_controller' => 'Smart\\CampusBundle\\Controller\\SmartController::supprimerAction',));
+            if (0 === strpos($pathinfo, '/smartcampus/s')) {
+                if (0 === strpos($pathinfo, '/smartcampus/supprimer')) {
+                    // smartcampus_supprimer
+                    if (preg_match('#^/smartcampus/supprimer/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'smartcampus_supprimer')), array (  '_controller' => 'Smart\\CampusBundle\\Controller\\SmartController::supprimerAction',));
+                    }
+
+                    // smartcampus_supprimerProp
+                    if (0 === strpos($pathinfo, '/smartcampus/supprimerProp') && preg_match('#^/smartcampus/supprimerProp/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'smartcampus_supprimerProp')), array (  '_controller' => 'Smart\\CampusBundle\\Controller\\SmartController::supprimerPropAction',));
+                    }
+
                 }
 
-                // smartcampus_supprimerProp
-                if (0 === strpos($pathinfo, '/smartcampus/supprimerProp') && preg_match('#^/smartcampus/supprimerProp/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'smartcampus_supprimerProp')), array (  '_controller' => 'Smart\\CampusBundle\\Controller\\SmartController::supprimerPropAction',));
+                // smartcampus_sensor
+                if ($pathinfo === '/smartcampus/sensor') {
+                    return array (  '_controller' => 'Smart\\CampusBundle\\Controller\\SmartController::sensorAction',  '_route' => 'smartcampus_sensor',);
                 }
 
             }

@@ -77,7 +77,7 @@ class __TwigTemplate_05957540769a6a3c184d17567cd3b5cb34f86d32b380d6b7352d2850c12
 <a href=\"";
         // line 35
         echo $this->env->getExtension('routing')->getPath("smartcampus_ajouterV");
-        echo "\" class=\"btn btn-primary bouton-accueil\">
+        echo "\" class=\"btn btn-success bouton-accueil\">
     + Capteur Virtuel
 </a>
 ";

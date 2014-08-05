@@ -2,6 +2,9 @@ smartcampus_accueil:
     path:  /
     defaults: { _controller: SmartCampusBundle:Smart:index }
 
+
+
+
 smartcampus_voirB:
     path:  /board/{id}
     defaults: { _controller: SmartCampusBundle:Smart:voirB }
@@ -19,6 +22,9 @@ smartcampus_voirP:
     defaults: { _controller: SmartCampusBundle:Smart:voirP }
     requirements :
         id: \d+
+
+
+
 
 smartcampus_ajouterProp:
     path:  /ajouterProp/{id}
@@ -38,6 +44,10 @@ smartcampus_ajouterP:
     path:  /ajouterP
     defaults: { _controller: SmartCampusBundle:Smart:ajouterP }
 
+
+
+
+
 smartcampus_modifierV:
     path:  /modifierV/{id}
     defaults: { _controller: SmartCampusBundle:Smart:modifierV }
@@ -50,10 +60,27 @@ smartcampus_modifierP:
     requirements:
         id: \d+
 
+
+
+
+
 smartcampus_supprimer:
     path:  /supprimer/{id}
     defaults: { _controller: SmartCampusBundle:Smart:supprimer }
+    requirements:
+        id: \d+
     
 smartcampus_supprimerProp:
     path:  /supprimerProp/{id}
     defaults: { _controller: SmartCampusBundle:Smart:supprimerProp }
+    requirements:
+        id: \d+
+
+
+
+
+smartcampus_sensor:
+    path:  /sensor
+    defaults: { _controller: SmartCampusBundle:Smart:sensor }
+    
+    

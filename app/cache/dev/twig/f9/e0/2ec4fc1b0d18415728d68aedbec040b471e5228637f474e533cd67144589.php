@@ -37,8 +37,10 @@ class __TwigTemplate_f9e02ec4fc1b0d18415728d68aedbec040b471e5228637f474e533cd671
     {
         // line 6
         echo "
-    <h1>Visualisation de ";
+    <h1><span class=\"glyphicon glyphicon-home\" style=\"cursor: pointer;\" onclick=\"location.href='";
         // line 7
+        echo $this->env->getExtension('routing')->getPath("smartcampus_accueil");
+        echo "';\"></span> Visualisation de ";
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["board"]) ? $context["board"] : $this->getContext($context, "board")), "name"), "html", null, true);
         echo "</h1>
 
@@ -75,13 +77,6 @@ class __TwigTemplate_f9e02ec4fc1b0d18415728d68aedbec040b471e5228637f474e533cd671
                 
             </div>
         </div>
-
-        <a href=\"";
-        // line 28
-        echo $this->env->getExtension('routing')->getPath("smartcampus_accueil", array("tag" => "Board"));
-        echo "\" class=\"btn\">
-            Retour à l'accueil
-        </a>
     </div>
 
 ";
@@ -99,6 +94,6 @@ class __TwigTemplate_f9e02ec4fc1b0d18415728d68aedbec040b471e5228637f474e533cd671
 
     public function getDebugInfo()
     {
-        return array (  81 => 28,  74 => 23,  65 => 21,  61 => 20,  51 => 13,  42 => 7,  39 => 6,  36 => 5,  29 => 3,);
+        return array (  76 => 23,  67 => 21,  63 => 20,  53 => 13,  42 => 7,  39 => 6,  36 => 5,  29 => 3,);
     }
 }
