@@ -1,0 +1,103 @@
+{
+    "_items": [{
+        "_updated": "Fri, 25 Jul 2014 09:08:29 GMT",
+        "kind": "temp",
+        "endpoint": {
+            "ip": "erebe-vm17.i3s.unice.fr",
+            "port": 808
+        },
+        "name": "TEMP_442",
+        "pin": "4",
+        "sensorType": "physical",
+        "frequency": 10,
+        "_links": {
+            "self": {
+                "href": "134.59.134.227:5000/sensors/53d21e8e7e5523530191f643",
+                "title": "sensor"
+            }
+        }, 
+        "board": "ARD_1_442",
+        "_created": "Fri, 25 Jul 2014 09:08:29 GMT",
+        "_id": "53d21e8e7e5523530191f643",
+        "_etag": "1d3d01f843a75d7a70596030662ce0ad15753eb5"
+    },
+               {
+                   "_updated": "Fri, 25 Jul 2014 09:09:01 GMT",
+                   "kind": "light",
+                   "endpoint": {
+                       "ip": "erebe-vm17.i3s.unice.fr",
+                       "port": 8080
+                   },
+                   "name": "LIGHT_442",
+                   "pin": "2",
+                   "sensorType": "physical",
+                   "frequency": 10,
+                   "_links": {
+                       "self": {
+                           "href": "134.59.134.227:5000/sensors/53d21ead7e5523530191f644",
+                           "title": "sensor"
+                       }
+                   }, 
+                   "board": "ARD_1_442",
+                   "_created": "Fri, 25 Jul 2014 09:09:01 GMT",
+                   "_id": "53d21ead7e5523530191f644",
+                   "_etag": "3e6263e20abceebe4350e70f464bd25bc5e31b10"},
+               {
+                   "_updated": "Tue, 29 Jul 2014 16:45:02 GMT",
+                   "kind": "temp",
+                   "endpoint": {
+                       "ip": "134.59.134.227",
+                       "port": 8080
+                   }, 
+                   "name": "TEMP_CAFE",
+                   "pin": "1",
+                   "sensorType": "physical",
+                   "frequency": 10,
+                   "_links": {
+                       "self": {
+                           "href": "134.59.134.227:5000/sensors/53d7cf207e552307f21b18a8",
+                           "title": "sensor"
+                       }
+                   }, 
+                   "board": "ARD_1_CAFE",
+                   "_created": "Tue, 29 Jul 2014 16:43:12 GMT",
+                   "_id": "53d7cf207e552307f21b18a8",
+                   "_etag": "ab4b69f8704d8b0274e459a378b417f5202241fa"
+               }, 
+               {
+                   "_updated": "Tue, 29 Jul 2014 16:45:40 GMT",
+                   "kind": "light",
+                   "endpoint": {
+                       "ip": "134.59.134.227",
+                       "port": 8080
+                   }, "name": "LIGHT_CAFE",
+                   "pin": "2",
+                   "sensorType": "physical",
+                   "frequency": 10,
+                   "_links": {
+                       "self": {
+                           "href": "134.59.134.227:5000/sensors/53d7cfb47e552307f21b18a9",
+                           "title": "sensor"
+                       }
+                   }, 
+                   "board": "ARD_1_CAFE",
+                   "_created": "Tue, 29 Jul 2014 16:45:40 GMT",
+                   "_id": "53d7cfb47e552307f21b18a9",
+                   "_etag": "00600b01ad72c824a620d2040193416899783fe1"
+               }], 
+    "_links": {
+        "self": {
+            "href": "134.59.134.227:5000/sensors",
+            "title": "sensors"
+        },
+        "parent": {
+            "href": "134.59.134.227:5000",
+            "title": "home"
+        }
+    },
+    "_meta": {
+        "max_results": 25,
+        "total": 4,
+        "page": 1
+    }
+}
