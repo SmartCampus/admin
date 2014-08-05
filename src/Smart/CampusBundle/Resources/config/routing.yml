@@ -83,11 +83,7 @@ smartcampus_sensors:
     path:  /sensors
     defaults: { _controller: SmartCampusBundle:Smart:sensors }
 
-smartcampus_sensorsV:
-    path:  /sensorsV/{name}
-    defaults: { _controller: SmartCampusBundle:Smart:sensorsV }
-    
-smartcampus_sensorsP:
-    path:  /sensorsP/{name}
-    defaults: { _controller: SmartCampusBundle:Smart:sensorsP }
+smartcampus_sensor:
+    path:  /sensors/{name}
+    defaults: { _controller: SmartCampusBundle:Smart:sensor }
     

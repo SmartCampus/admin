@@ -216,14 +216,9 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                         return array (  '_controller' => 'Smart\\CampusBundle\\Controller\\SmartController::sensorsAction',  '_route' => 'smartcampus_sensors',);
                     }
 
-                    // smartcampus_sensorsV
-                    if (0 === strpos($pathinfo, '/smartcampus/sensorsV') && preg_match('#^/smartcampus/sensorsV/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'smartcampus_sensorsV')), array (  '_controller' => 'Smart\\CampusBundle\\Controller\\SmartController::sensorsVAction',));
-                    }
-
-                    // smartcampus_sensorsP
-                    if (0 === strpos($pathinfo, '/smartcampus/sensorsP') && preg_match('#^/smartcampus/sensorsP/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'smartcampus_sensorsP')), array (  '_controller' => 'Smart\\CampusBundle\\Controller\\SmartController::sensorsPAction',));
+                    // smartcampus_sensor
+                    if (preg_match('#^/smartcampus/sensors/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'smartcampus_sensor')), array (  '_controller' => 'Smart\\CampusBundle\\Controller\\SmartController::sensorAction',));
                     }
 
                 }

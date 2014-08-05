@@ -85,9 +85,9 @@ class __TwigTemplate_97a4de7d48f33fa05bfaaea6651420895c9aefa3869644c93193c1d679d
         <br>
         <a href=\"";
         // line 31
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("smartcampus_sensorsV", array("name" => $this->getAttribute((isset($context["capteur"]) ? $context["capteur"] : $this->getContext($context, "capteur")), "name"))), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("smartcampus_sensor", array("name" => $this->getAttribute((isset($context["capteur"]) ? $context["capteur"] : $this->getContext($context, "capteur")), "name"))), "html", null, true);
         echo "\" class=\"btn btn-info\">
-            smartcampus/sensorsV/";
+            smartcampus/sensors/";
         // line 32
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["capteur"]) ? $context["capteur"] : $this->getContext($context, "capteur")), "name"), "html", null, true);
         echo "

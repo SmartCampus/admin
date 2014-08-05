@@ -374,56 +374,48 @@ class SmartController extends Controller
             array_push($res, $cap);
         }
         
-        $response->setData(array('sensor' => $res));
+        $response->setData(array('sensors' => $res));
         $response->headers->set('Content-Type', 'application/json');
         return $response;
     }
     
-    /** Afficher les details d'un capteur virtuel */
-    public function sensorsVAction($name)
+    /** Afficher les details d'un capteur */
+    public function sensorAction($name)
     {
-        $vir = $this->getDoctrine()
+        $cap = $this->getDoctrine()
                 ->getRepository('SmartCampusBundle:Virtuel')
                 ->findOneByName($name);
         
-        if($vir === null)
+        if($cap === null)
         {
-            throw $this->createNotFoundException('Capteur[name='.$name.'] inexistant.');
-        }
-        
-        $response = new JsonResponse();
-        
-        $cap = array('name' => $vir->getName(),
-                    'kind' => $vir->getKind(),
-                    'frequency' => $vir->getFrequency(),
-                    'script' => $vir->getScript());
-        
-        $response->setData(array('sensor' => $cap));
-        $response->headers->set('Content-Type', 'application/json');
-        return $response;
-    }
-    
-    /** Afficher les details d'un capteur physique */
-    public function sensorsPAction($name)
-    {
-        $phy = $this->getDoctrine()
+            $cap = $this->getDoctrine()
                 ->getRepository('SmartCampusBundle:Physique')
                 ->findOneByName($name);
+            if($cap === null)
+            {
+                throw $this->createNotFoundException('Capteur[name='.$name.'] inexistant.');
+            }
+        }
         
-        if($phy === null)
+        if($cap instanceof Virtuel)
         {
-            throw $this->createNotFoundException('Capteur[name='.$name.'] inexistant.');
+            $ret = array('name' => $cap->getName(),
+                        'kind' => $cap->getKind(),
+                        'frequency' => $cap->getFrequency(),
+                        'script' => $cap->getScript());
+        }
+        
+        if($cap instanceof Physique)
+        {
+            $ret = array('name' => $cap->getName(),
+                    'kind' => $cap->getKind(),
+                    'frequency' => $cap->getFrequency(),
+                    'script' => $cap->getBoard(),
+                    'script' => $cap->getEndpoint());
         }
         
         $response = new JsonResponse();
-        
-        $cap = array('name' => $phy->getName(),
-                    'kind' => $phy->getKind(),
-                    'frequency' => $phy->getFrequency(),
-                    'script' => $phy->getBoard(),
-                    'script' => $phy->getEndpoint());
-        
-        $response->setData(array('sensor' => $cap));
+        $response->setData(array('sensor' => $ret));
         $response->headers->set('Content-Type', 'application/json');
         return $response;
     }
