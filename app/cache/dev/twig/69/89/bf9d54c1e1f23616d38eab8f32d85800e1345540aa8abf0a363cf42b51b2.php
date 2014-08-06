@@ -37,7 +37,10 @@ class __TwigTemplate_6989bf9d54c1e1f23616d38eab8f32d85800e1345540aa8abf0a363cf42
     {
         // line 6
         echo "
-    <h1>Ajout d'une Board</h1>
+    <h1><span class=\"glyphicon glyphicon-home\" style=\"cursor: pointer;\" onclick=\"location.href='";
+        // line 7
+        echo $this->env->getExtension('routing')->getPath("smartcampus_accueil");
+        echo "';\"></span> Ajout d'une Board</h1>
 
 \t<!--formulaire d'ajout d'une board-->
     <div class=\"well container\">
@@ -66,17 +69,10 @@ class __TwigTemplate_6989bf9d54c1e1f23616d38eab8f32d85800e1345540aa8abf0a363cf42
         echo "
           </div>
           <div class=\"form-group\">
-              <input type=\"submit\" class=\"btn btn-primary\"/>
+              <input type=\"submit\" class=\"btn btn-success\"/>
           </div>
       </form>
     </div>
-\t
-    <a href=\"";
-        // line 26
-        echo $this->env->getExtension('routing')->getPath("smartcampus_accueil", array("tag" => "Board"));
-        echo "\" class=\"btn\">
-        Retour à l'accueil
-    </a>
 
 ";
     }
@@ -93,6 +89,6 @@ class __TwigTemplate_6989bf9d54c1e1f23616d38eab8f32d85800e1345540aa8abf0a363cf42
 
     public function getDebugInfo()
     {
-        return array (  76 => 26,  65 => 18,  59 => 15,  55 => 14,  51 => 13,  46 => 11,  39 => 6,  36 => 5,  29 => 3,);
+        return array (  68 => 18,  62 => 15,  58 => 14,  54 => 13,  49 => 11,  42 => 7,  39 => 6,  36 => 5,  29 => 3,);
     }
 }

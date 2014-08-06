@@ -13,7 +13,7 @@
             
             <tbody>
                 {% for cap in phyAll %}
-                    <tr class="lien" style="cursor: pointer;" onclick="location.href='{{ path('smartcampus_voirP', {'id': cap.id}) }}';">
+                    <tr class="lien" style="cursor: pointer;" onclick="location.href='{{ path('smartcampus_voir', {'id': cap.id}) }}';">
                         <td>
                             {{ cap.name }}
                         </td>
@@ -37,5 +37,5 @@
 </div>
 
 <a href="{{ path('smartcampus_ajouterP') }}" class="btn btn-success bouton-accueil">
-    + Capteur Physique
+    <span class="glyphicon glyphicon-plus-sign"></span> Capteur Physique
 </a>

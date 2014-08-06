@@ -85,7 +85,7 @@ class __TwigTemplate_9696fb7a9eab644d138f68b6b175ad7ff8677ba78357bbd015761ff9b18
         echo "
           </div>
           <div class=\"form-group\">
-              <input type=\"submit\" class=\"btn btn-primary\"/>
+              <input type=\"submit\" class=\"btn btn-success\"/>
           </div>
       </form>
     </div>

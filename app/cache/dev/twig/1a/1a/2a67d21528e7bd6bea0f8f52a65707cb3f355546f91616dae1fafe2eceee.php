@@ -37,7 +37,7 @@ class __TwigTemplate_1a1a2a67d21528e7bd6bea0f8f52a65707cb3f355546f91616dae1fafe2
         foreach ($context['_seq'] as $context["_key"] => $context["cap"]) {
             // line 16
             echo "                    <tr class=\"lien\" style=\"cursor: pointer;\" onclick=\"location.href='";
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("smartcampus_voirP", array("id" => $this->getAttribute((isset($context["cap"]) ? $context["cap"] : $this->getContext($context, "cap")), "id"))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("smartcampus_voir", array("id" => $this->getAttribute((isset($context["cap"]) ? $context["cap"] : $this->getContext($context, "cap")), "id"))), "html", null, true);
             echo "';\">
                         <td>
                             ";
@@ -89,7 +89,7 @@ class __TwigTemplate_1a1a2a67d21528e7bd6bea0f8f52a65707cb3f355546f91616dae1fafe2
         // line 39
         echo $this->env->getExtension('routing')->getPath("smartcampus_ajouterP");
         echo "\" class=\"btn btn-success bouton-accueil\">
-    + Capteur Physique
+    <span class=\"glyphicon glyphicon-plus-sign\"></span> Capteur Physique
 </a>
 ";
     }

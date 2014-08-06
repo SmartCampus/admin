@@ -57,7 +57,7 @@ class __TwigTemplate_4ccf484488edc7c7fced03e1505d4c211445799ab34404b96e6061aefb8
         // line 23
         echo $this->env->getExtension('routing')->getPath("smartcampus_ajouterB");
         echo "\" class=\"btn btn-success bouton-accueil\">
-    + Board
+    <span class=\"glyphicon glyphicon-plus-sign\"></span> Board
 </a>
 
 ";

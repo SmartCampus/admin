@@ -234,7 +234,7 @@ class SmartController extends Controller
         if($cap instanceof Physique)
         {
             $form = $this->createForm(new PhysiqueEditType, $cap);
-            $rend='SmartCampusBundle:Smart:modiP.html.twig';
+            $rend='SmartCampusBundle:Smart:modifP.html.twig';
         }
         
         $request = $this->getRequest();
@@ -336,7 +336,7 @@ class SmartController extends Controller
 	}
     
 // =====================================================================================================
-// JSON ------------------------------------------------------------------------------------------------
+// GENERATION JSON -------------------------------------------------------------------------------------
 // =====================================================================================================
     
     /** Afficher la liste des capteurs ------------------------------------------------------------------ */
@@ -352,21 +352,20 @@ class SmartController extends Controller
         
         $cap = array();
         $res = array();
-        $response = new JsonResponse();
         
         foreach($virAll as $vir){
+            /*$cap = array($this->sensorAction($vir->getName()));*/
             $cap = array('name' => $vir->getName());
             array_push($res, $cap);
         }
 
         foreach($phyAll as $phy){
+            /*$cap = array($this->sensorAction($phy->getName()));*/
             $cap = array('name' => $phy->getName());
             array_push($res, $cap);
         }
         
-        $response->setData(array('sensors' => $res));
-        $response->headers->set('Content-Type', 'application/json');
-        return $response;
+        return new JsonResponse(array('sensors' => $res));
     }
     
     /** Afficher les details d'un capteur ------------------------------------------------------------------ */
@@ -404,9 +403,19 @@ class SmartController extends Controller
                     'script' => $cap->getEndpoint());
         }
         
-        $response = new JsonResponse();
-        $response->setData(array('sensor' => $ret));
-        $response->headers->set('Content-Type', 'application/json');
-        return $response;
+        return new JsonResponse(array('sensor' => $ret));
+    }
+    
+// =====================================================================================================
+// RECUPERATION JSON -----------------------------------------------------------------------------------
+// =====================================================================================================
+    
+    /** Recuperer Json ------------------------------------------------------------------ */
+    public function getJson($url)
+    {
+        $json = file_get_content($url);
+        $obj = json_decode($json);
+        
+        return new Response($obj);
     }
 }

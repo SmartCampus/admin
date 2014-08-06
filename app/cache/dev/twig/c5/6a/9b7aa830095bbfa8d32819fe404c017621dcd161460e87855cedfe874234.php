@@ -138,20 +138,27 @@ class __TwigTemplate_c56a9b7aa830095bbfa8d32819fe404c017621dcd161460e87855cedfe8
         // line 65
         echo $this->env->getExtension('routing')->getPath("smartcampus_ajouterV");
         echo "\" class=\"btn btn-success bouton-accueil\">
-    + Capteur Virtuel
+    <span class=\"glyphicon glyphicon-plus-sign\"></span> Capteur Virtuel
 </a>
 <a href=\"";
         // line 68
         echo $this->env->getExtension('routing')->getPath("smartcampus_ajouterP");
         echo "\" class=\"btn btn-success bouton-accueil\">
-    + Capteur Physique
+    <span class=\"glyphicon glyphicon-plus-sign\"></span> Capteur Physique
 </a>
 <br>
 <a href=\"";
         // line 72
         echo $this->env->getExtension('routing')->getPath("smartcampus_sensors");
         echo "\" class=\"btn btn-info bouton-accueil\">
-    smartcampus/sensors/
+    <span class=\"glyphicon glyphicon-eye-open\"></span> Voir Json
+</a>
+<br>
+<a href=\"";
+        // line 76
+        echo $this->env->getExtension('routing')->getPath("smartcampus_sensors");
+        echo "\" class=\"btn btn-warning bouton-accueil\">
+    <span class=\"glyphicon glyphicon-cloud-download\"></span> Récupérer Json
 </a>
 ";
     }
@@ -168,6 +175,6 @@ class __TwigTemplate_c56a9b7aa830095bbfa8d32819fe404c017621dcd161460e87855cedfe8
 
     public function getDebugInfo()
     {
-        return array (  152 => 72,  145 => 68,  139 => 65,  132 => 60,  120 => 56,  112 => 53,  103 => 47,  97 => 44,  91 => 41,  85 => 39,  80 => 38,  64 => 28,  58 => 25,  52 => 22,  46 => 19,  40 => 17,  36 => 16,  19 => 1,);
+        return array (  159 => 76,  152 => 72,  145 => 68,  139 => 65,  132 => 60,  120 => 56,  112 => 53,  103 => 47,  97 => 44,  91 => 41,  85 => 39,  80 => 38,  64 => 28,  58 => 25,  52 => 22,  46 => 19,  40 => 17,  36 => 16,  19 => 1,);
     }
 }

@@ -12,7 +12,7 @@
             
             <tbody>
                 {% for cap in virAll %}
-                    <tr class="lien" style="cursor: pointer;" onclick="location.href='{{ path('smartcampus_voirV', {'id': cap.id}) }}';">
+                    <tr class="lien" style="cursor: pointer;" onclick="location.href='{{ path('smartcampus_voir', {'id': cap.id}) }}';">
                         <td>
                             {{ cap.name }}
                         </td>
@@ -33,5 +33,5 @@
 </div>
 
 <a href="{{ path('smartcampus_ajouterV') }}" class="btn btn-success bouton-accueil">
-    + Capteur Virtuel
+    <span class="glyphicon glyphicon-plus-sign"></span> Capteur Virtuel
 </a>

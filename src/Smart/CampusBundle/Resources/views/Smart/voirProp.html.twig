@@ -10,11 +10,13 @@
     <div class="col-md-3">
         {% for prop in capteur.propriete %}
             <p>
-                <input type="button" value="supp." class="btn btn btn-danger" onclick="suppr('{{ path('smartcampus_supprimerProp', {'id': prop.id, 'tag': kind}) }}');">
+                <a  onclick="suppr('{{ path('smartcampus_supprimerProp', {'id': prop.id, 'tag': kind}) }}');" class="btn btn btn-danger">
+                    <span class="glyphicon glyphicon-minus-sign"></span>
+                </a>
             </p>
         {% endfor %}
         <a href="{{ path('smartcampus_ajouterProp', {'id': capteur.id, 'tag': kind}) }}" class="btn btn-success">
-            Ajouter
+            <span class="glyphicon glyphicon-plus-sign"></span>
         </a>
     </div>
 </div>
