@@ -134,7 +134,7 @@ class SmartController extends Controller
                 $em->persist($vir);
                 $em->flush();
                 
-                return $this->redirect($this->generateUrl('smartcampus_voirV', array('id' => $vir->getId())));
+                return $this->redirect($this->generateUrl('smartcampus_voir', array('id' => $vir->getId())));
             }
         }
         
@@ -157,7 +157,7 @@ class SmartController extends Controller
                 $em->persist($phy->getEndpoint());
                 $em->flush();
                 
-                return $this->redirect($this->generateUrl('smartcampus_voirP', array('id' => $phy->getId())));
+                return $this->redirect($this->generateUrl('smartcampus_voir', array('id' => $phy->getId())));
             }
         }
         
@@ -391,7 +391,8 @@ class SmartController extends Controller
             $ret = array('name' => $cap->getName(),
                         'kind' => $cap->getKind(),
                         'frequency' => $cap->getFrequency(),
-                        'script' => $cap->getScript());
+                        'script' => $cap->getScript(),
+                        'properties' => $cap->getPropriete());
         }
         
         if($cap instanceof Physique)
@@ -399,8 +400,9 @@ class SmartController extends Controller
             $ret = array('name' => $cap->getName(),
                     'kind' => $cap->getKind(),
                     'frequency' => $cap->getFrequency(),
-                    'script' => $cap->getBoard(),
-                    'script' => $cap->getEndpoint());
+                    'board' => $cap->getBoard(),
+                    'endpoint' => $cap->getEndpoint(),
+                    'properties' => $cap->getPropriete());
         }
         
         return new JsonResponse(array('sensor' => $ret));
@@ -411,11 +413,57 @@ class SmartController extends Controller
 // =====================================================================================================
     
     /** Recuperer Json ------------------------------------------------------------------ */
-    public function getJson($url)
+    public function jsonAction()
     {
-        $json = file_get_content($url);
-        $obj = json_decode($json);
+        $url = "http://smartcampus.unice.fr/data-api/sensors";
+        $json = file_get_contents($url);
         
-        return new Response($obj);
+        if($json === null)
+        {
+            throw $this->createNotFoundException('Pas de Json trouve a l_adresse ['.$url.']');
+        }
+        
+        $obj = json_decode($json);
+        $arr = json_decode($json, true);
+        
+        //affiche la hierarchie de l'objet ou array -- décomenter pour voir ;)
+        /*$dump = var_dump($arr);*/
+        
+        //array de tout les capteurs
+        $capAll = $obj->{'_items'};
+        
+        foreach($capAll as $cap){
+            $this->verifInBase($cap->{'name'});
+        }
+        
+        return new Response("");
+    }
+    
+    public function verifInBase($name)
+    {
+        $cap = $this->getDoctrine()
+                ->getRepository('SmartCampusBundle:Virtuel')
+                ->findOneByName($name);
+        
+        if($cap === null)
+        {
+            $cap = $this->getDoctrine()
+                ->getRepository('SmartCampusBundle:Physique')
+                ->findOneByName($name);
+            if($cap === null)
+            {
+                print("Le capteur ".$name." n'est pas dans la base<br>");
+            }
+        }
+        if($cap != null)
+        {
+            $cap = $this->getDoctrine()
+                ->getRepository('SmartCampusBundle:Physique')
+                ->findOneByName($name);
+            if($cap != null)
+            {
+                print("Le capteur ".$name." est déjà dans la base<br>");
+            }
+        }
     }
 }

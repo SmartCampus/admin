@@ -28,7 +28,7 @@ class Capteur
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, unique=true)
-     * @Assert\Regex(pattern= "/[A-Z]{4,5}_[0-9]{3}V?/")
+     * @Assert\Regex(pattern= "/[A-Z]+_[0-9-A-Z]+V?/")
      */
     private $name;
 

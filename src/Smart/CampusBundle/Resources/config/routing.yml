@@ -70,3 +70,6 @@ smartcampus_sensor:
     path:  /sensors/{name}
     defaults: { _controller: SmartCampusBundle:Smart:sensor }
     
+smartcampus_json:
+    path:  /json
+    defaults: { _controller: SmartCampusBundle:Smart:json }

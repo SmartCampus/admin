@@ -34,7 +34,6 @@ class Endpoint
      * @var string
      *
      * @ORM\Column(name="port", type="string", length=255)
-     * @Assert\Regex(pattern= "/(\d*)/")
      */
     private $port;
 

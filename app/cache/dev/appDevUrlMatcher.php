@@ -212,6 +212,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             }
 
+            // smartcampus_json
+            if ($pathinfo === '/smartcampus/json') {
+                return array (  '_controller' => 'Smart\\CampusBundle\\Controller\\SmartController::jsonAction',  '_route' => 'smartcampus_json',);
+            }
+
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

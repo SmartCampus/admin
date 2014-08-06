@@ -146,17 +146,17 @@ class __TwigTemplate_c56a9b7aa830095bbfa8d32819fe404c017621dcd161460e87855cedfe8
         echo "\" class=\"btn btn-success bouton-accueil\">
     <span class=\"glyphicon glyphicon-plus-sign\"></span> Capteur Physique
 </a>
-<br>
+<br/>
 <a href=\"";
         // line 72
         echo $this->env->getExtension('routing')->getPath("smartcampus_sensors");
         echo "\" class=\"btn btn-info bouton-accueil\">
     <span class=\"glyphicon glyphicon-eye-open\"></span> Voir Json
 </a>
-<br>
+<br/>
 <a href=\"";
         // line 76
-        echo $this->env->getExtension('routing')->getPath("smartcampus_sensors");
+        echo $this->env->getExtension('routing')->getPath("smartcampus_json");
         echo "\" class=\"btn btn-warning bouton-accueil\">
     <span class=\"glyphicon glyphicon-cloud-download\"></span> Récupérer Json
 </a>
