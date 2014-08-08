@@ -369,12 +369,23 @@ class SmartController extends Controller
             array_push($res, $cap);
         }
         
-        /*Transforme les '\/' en '/' pour l'affichage, ne peut pas être afficher en json
-        $response = new JsonResponse(array('sensors' => $res));
-        $response = str_replace("\\/", "/", $response);
-        return new JsonResponse($response);*/
         
-        return new JsonResponse(array('sensors' => $res));;
+        
+        //return $response; = json_encode($lien, JSON_UNESCAPED_SLASHES);
+        return new JsonResponse(array('sensors' => $res));
+        
+        // ======== Transforme les '\/' en '/' pour l'affichage =============================
+        
+        /*$response = new JsonResponse(array('sensors' => $res));
+        $response = str_replace("\\/", "/", $response);
+        $response->headers->set('Content-Type', 'application/json');
+        return new Response($response);*/
+        
+        /*$response = new JsonResponse(array('sensors' => $res));
+        $response = stripslashes($response);
+        $response->headers->set('Content-Type', 'application/json');
+        return new Response($response);*/
+        
     }
     
     /** Afficher les details d'un capteur ------------------------------------------------------------------ */
@@ -426,7 +437,7 @@ class SmartController extends Controller
                          'properties' => $propriete);
         }
         
-        /*$response->headers->set('Content-Type', 'application/json'); /** Ajouté automatiquement dans le cas de JsonResponse normalement */
+        /*$response->headers->set('Content-Type', 'application/json'); /** Ajouté automatiquement dans le cas de JsonResponse */
         return new JsonResponse(array('sensor' => $ret));
     }
     
@@ -437,6 +448,8 @@ class SmartController extends Controller
     /** Recuperer Json ------------------------------------------------------------------ */
     public function jsonAction()
     {
+        $this->get('session')->getFlashBag()->add('log-head', 'Logs de synchronisation :');
+        
         $url = "http://smartcampus.unice.fr/data-api/sensors";
         $json = file_get_contents($url);
         
@@ -458,7 +471,7 @@ class SmartController extends Controller
             $this->checkInBase($cap->{'name'});
         }
         
-        $this->get('session')->getFlashBag()->add('info', 'Capteurs synchronisé avec succès');
+        $this->get('session')->getFlashBag()->add('log-tail', 'Synchronisé effectué avec succès');
         
         return $this->redirect($this->generateUrl('smartcampus_accueil'));
     }
@@ -487,7 +500,7 @@ class SmartController extends Controller
                 ->findOneByName($name);
             if($cap != null)
             {
-                //rien à faire
+                $this->get('session')->getFlashBag()->add('log-info', 'Capteurs '.$name.' déjà présent dans la base');
             }
         }
     }
@@ -530,6 +543,8 @@ class SmartController extends Controller
             
             $em->persist($vir);
             $em->flush();
+            
+            $this->get('session')->getFlashBag()->add('log-ajout', 'Capteurs '.$name.' créé avec succès');
         }
         
         //creation d'un capteur physique
@@ -544,9 +559,11 @@ class SmartController extends Controller
             if($board === null)
             {
                 $board = new Board();
-                $board->setName($capAll[$i]->{'board'});
+                $board->setName($boardname);
                 $em->persist($board);
                 $em->flush();
+                
+                $this->get('session')->getFlashBag()->add('log-ajout', 'Board '.$boardname.' créé avec succès');
             }
             
             //creation endpoint
@@ -567,6 +584,8 @@ class SmartController extends Controller
             
             $em->persist($phy);
             $em->flush();
+            
+            $this->get('session')->getFlashBag()->add('log-ajout', 'Capteurs '.$name.' créé avec succès');
         }
     }
 }

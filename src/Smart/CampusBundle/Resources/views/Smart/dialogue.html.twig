@@ -1,8 +1,6 @@
-{% if app.session.flashbag.get('info') != NULL %}
-<div id="dialog-message" title="Modification">
-    {% for flashMessage in app.session.flashbag.get('info') %}
-    <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
-    <p>{{ flashMessage }}</p>
-    {% endfor %}
-</div>
-{% endif %}
+{% for flashMessage in app.session.flashbag.get('info') %}
+    <div id="dialog-message" title="Information">
+        <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+        <p>{{ flashMessage }}</p>
+    </div>
+{% endfor %}

@@ -95,6 +95,12 @@ class __TwigTemplate_418116ea6a32a0db89513854f09bf5e9037676f31d92565e65dcb5c3ac2
         // line 29
         $this->env->loadTemplate("SmartCampusBundle:Smart:dialogue.html.twig")->display($context);
         // line 30
+        echo "    
+    <!-- Boite dialogue log synchro -->
+    ";
+        // line 32
+        $this->env->loadTemplate("SmartCampusBundle:Smart:log.html.twig")->display($context);
+        // line 33
         echo "
 ";
     }
@@ -111,6 +117,6 @@ class __TwigTemplate_418116ea6a32a0db89513854f09bf5e9037676f31d92565e65dcb5c3ac2
 
     public function getDebugInfo()
     {
-        return array (  98 => 30,  96 => 29,  90 => 25,  87 => 24,  84 => 23,  81 => 22,  78 => 21,  75 => 20,  72 => 19,  69 => 18,  66 => 17,  63 => 16,  60 => 15,  57 => 14,  55 => 13,  50 => 10,  48 => 9,  39 => 6,  36 => 5,  29 => 3,);
+        return array (  104 => 33,  102 => 32,  98 => 30,  96 => 29,  90 => 25,  87 => 24,  84 => 23,  81 => 22,  78 => 21,  75 => 20,  72 => 19,  69 => 18,  66 => 17,  63 => 16,  60 => 15,  57 => 14,  55 => 13,  50 => 10,  48 => 9,  39 => 6,  36 => 5,  29 => 3,);
     }
 }

@@ -133,32 +133,36 @@ class __TwigTemplate_c56a9b7aa830095bbfa8d32819fe404c017621dcd161460e87855cedfe8
         </table>
     </div>
 </div>
-
-<a href=\"";
-        // line 65
+<!--<a href=\"";
+        // line 64
         echo $this->env->getExtension('routing')->getPath("smartcampus_ajouterV");
         echo "\" class=\"btn btn-success bouton-accueil\">
     <span class=\"glyphicon glyphicon-plus-sign\"></span> Capteur Virtuel
 </a>
 <a href=\"";
-        // line 68
+        // line 67
         echo $this->env->getExtension('routing')->getPath("smartcampus_ajouterP");
         echo "\" class=\"btn btn-success bouton-accueil\">
     <span class=\"glyphicon glyphicon-plus-sign\"></span> Capteur Physique
 </a>
-<br/>
+<br/>-->
 <a href=\"";
-        // line 72
+        // line 71
         echo $this->env->getExtension('routing')->getPath("smartcampus_sensors");
         echo "\" class=\"btn btn-info bouton-accueil\">
-    <span class=\"glyphicon glyphicon-eye-open\"></span> Voir Json
+    <span class=\"glyphicon glyphicon-eye-open\"></span> Voir le Json
 </a>
-<br/>
 <a href=\"";
-        // line 76
+        // line 74
         echo $this->env->getExtension('routing')->getPath("smartcampus_json");
         echo "\" class=\"btn btn-warning bouton-accueil\">
     <span class=\"glyphicon glyphicon glyphicon-refresh\"></span> Synchronisation avec SmartCampus
+</a>
+<a href=\"";
+        // line 77
+        echo $this->env->getExtension('routing')->getPath("smartcampus_accueil");
+        echo "\" class=\"btn btn-danger bouton-accueil\">
+    <span class=\"glyphicon glyphicon glyphicon-trash\"></span> Vider les logs
 </a>
 ";
     }
@@ -175,6 +179,6 @@ class __TwigTemplate_c56a9b7aa830095bbfa8d32819fe404c017621dcd161460e87855cedfe8
 
     public function getDebugInfo()
     {
-        return array (  159 => 76,  152 => 72,  145 => 68,  139 => 65,  132 => 60,  120 => 56,  112 => 53,  103 => 47,  97 => 44,  91 => 41,  85 => 39,  80 => 38,  64 => 28,  58 => 25,  52 => 22,  46 => 19,  40 => 17,  36 => 16,  19 => 1,);
+        return array (  163 => 77,  157 => 74,  151 => 71,  144 => 67,  138 => 64,  132 => 60,  120 => 56,  112 => 53,  103 => 47,  97 => 44,  91 => 41,  85 => 39,  80 => 38,  64 => 28,  58 => 25,  52 => 22,  46 => 19,  40 => 17,  36 => 16,  19 => 1,);
     }
 }

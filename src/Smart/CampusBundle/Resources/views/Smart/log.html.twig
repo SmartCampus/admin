@@ -1,0 +1,20 @@
+<br/>
+<div id="logs" class="well container">
+    {% for flashMessage in app.session.flashbag.get('log-head') %}
+    <p>{{ flashMessage }}</p>
+    {% endfor %}
+    
+    {% for flashMessage in app.session.flashbag.get('log-ajout') %}
+    <span class="ui-icon ui-icon-circle-plus" style="float:left;"></span>
+    <p>{{ flashMessage }}</p>
+    {% endfor %}
+    
+    {% for flashMessage in app.session.flashbag.get('log-info') %}
+    <span class="ui-icon ui-icon-check" style="float:left;"></span>
+    <p> {{ flashMessage }}</p>
+    {% endfor %}
+    
+    {% for flashMessage in app.session.flashbag.get('log-tail') %}
+    <p> {{ flashMessage }}</p>
+    {% endfor %}
+</div>
