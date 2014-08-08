@@ -10,7 +10,7 @@
     <div class="col-md-3">
         {% for prop in capteur.propriete %}
             <p>
-                <a  onclick="suppr('{{ path('smartcampus_supprimerProp', {'id': prop.id, 'tag': kind}) }}');" class="btn btn btn-danger">
+                <a  onclick="suppr('{{ path('smartcampus_supprimerProp', {'id': prop.id}) }}');" class="btn btn btn-danger">
                     <span class="glyphicon glyphicon-minus-sign"></span>
                 </a>
             </p>

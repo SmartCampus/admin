@@ -74,7 +74,7 @@ class __TwigTemplate_97a4de7d48f33fa05bfaaea6651420895c9aefa3869644c93193c1d679d
         // line 24
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("smartcampus_modifier", array("id" => $this->getAttribute((isset($context["capteur"]) ? $context["capteur"] : $this->getContext($context, "capteur")), "id"))), "html", null, true);
         echo "\" class=\"btn btn-primary\">
-            <span class=\"glyphicon glyphicon-refresh\"></span> Modifier
+            <span class=\"glyphicon glyphicon glyphicon-pencil\"></span> Modifier
         </a>
         <a  onclick=\"suppr('";
         // line 27

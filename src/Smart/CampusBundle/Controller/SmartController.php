@@ -168,7 +168,6 @@ class SmartController extends Controller
 	public function ajouterPropAction($id)
 	{
         $prop = new Propriete();
-        $tag = $this->getRequest()->query->get('tag');
         $cap = $this->getDoctrine()
                 ->getRepository('SmartCampusBundle:Virtuel')
                 ->find($id);
@@ -197,7 +196,7 @@ class SmartController extends Controller
                 
                 $this->get('session')->getFlashBag()->add('info', 'Nouvelle propriété ajouté avec succès');
                 
-                return $this->redirect($this->generateUrl('smartcampus_voir'.$tag, array('id' => $id)));
+                return $this->redirect($this->generateUrl('smartcampus_voir', array('id' => $id)));
             }
         }
         
@@ -295,8 +294,12 @@ class SmartController extends Controller
             
           }
         }
-
+        
         $em = $this->getDoctrine()->getManager();
+        if($cap instanceof Physique)
+        {
+            $em->remove($cap->getEndpoint());
+        }
         $em->remove($cap);
         $em->flush();
 
@@ -306,7 +309,6 @@ class SmartController extends Controller
     /** Supprimer une propriete ------------------------------------------------------------------ */
 	public function supprimerPropAction($id)
 	{
-        $tag = $this->getRequest()->query->get('tag');
         $prop = $this->getDoctrine()
                 ->getRepository('SmartCampusBundle:Propriete')
                 ->find($id);
@@ -327,12 +329,12 @@ class SmartController extends Controller
             throw $this->createNotFoundException('ERREUR : formulaire.');
           }
         }
-
+        
         $em = $this->getDoctrine()->getManager();
         $em->remove($prop);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('smartcampus_voir'.$tag, array('id' => $idCap)));
+        return $this->redirect($this->generateUrl('smartcampus_voir', array('id' => $idCap)));
 	}
     
 // =====================================================================================================
@@ -354,18 +356,25 @@ class SmartController extends Controller
         $res = array();
         
         foreach($virAll as $vir){
-            /*$cap = array($this->sensorAction($vir->getName()));*/
-            $cap = array('name' => $vir->getName());
+            $name = $vir->getName();
+            $lien = $this->generateUrl('smartcampus_sensor', array('name' => $name));
+            $cap = array('name' => $name, 'lien' => $lien);
             array_push($res, $cap);
         }
 
         foreach($phyAll as $phy){
-            /*$cap = array($this->sensorAction($phy->getName()));*/
-            $cap = array('name' => $phy->getName());
+            $name = $phy->getName();
+            $lien = $this->generateUrl('smartcampus_sensor', array('name' => $name));
+            $cap = array('name' => $name, 'lien' => $lien);
             array_push($res, $cap);
         }
         
-        return new JsonResponse(array('sensors' => $res));
+        /*Transforme les '\/' en '/' pour l'affichage, ne peut pas être afficher en json
+        $response = new JsonResponse(array('sensors' => $res));
+        $response = str_replace("\\/", "/", $response);
+        return new JsonResponse($response);*/
+        
+        return new JsonResponse(array('sensors' => $res));;
     }
     
     /** Afficher les details d'un capteur ------------------------------------------------------------------ */
@@ -386,25 +395,38 @@ class SmartController extends Controller
             }
         }
         
+        //recupere les propriete du capteur
+        $propriete = array();
+        $propAll = $cap->getPropriete();
+        foreach($propAll as $prop)
+        {
+            $proptmp = array('name' => $prop->getName(),
+                          'value' => $prop->getValue());
+            array_push($propriete, $proptmp);
+        }
+        
         if($cap instanceof Virtuel)
         {
             $ret = array('name' => $cap->getName(),
-                        'kind' => $cap->getKind(),
-                        'frequency' => $cap->getFrequency(),
-                        'script' => $cap->getScript(),
-                        'properties' => $cap->getPropriete());
+                         'kind' => $cap->getKind(),
+                         'frequency' => $cap->getFrequency(),
+                         'script' => $cap->getScript(),
+                         'properties' => $propriete);
         }
         
         if($cap instanceof Physique)
         {
             $ret = array('name' => $cap->getName(),
-                    'kind' => $cap->getKind(),
-                    'frequency' => $cap->getFrequency(),
-                    'board' => $cap->getBoard(),
-                    'endpoint' => $cap->getEndpoint(),
-                    'properties' => $cap->getPropriete());
+                         'kind' => $cap->getKind(),
+                         'frequency' => $cap->getFrequency(),
+                         'pin' => $cap->getPin(),
+                         'board' => array('name' => $cap->getBoard()->getName()),
+                         'endpoint' => array('ip' => $cap->getEndpoint()->getIp(),
+                                             'port' => $cap->getEndpoint()->getPort()),
+                         'properties' => $propriete);
         }
         
+        /*$response->headers->set('Content-Type', 'application/json'); /** Ajouté automatiquement dans le cas de JsonResponse normalement */
         return new JsonResponse(array('sensor' => $ret));
     }
     
@@ -426,20 +448,23 @@ class SmartController extends Controller
         $obj = json_decode($json);
         $arr = json_decode($json, true);
         
-        //affiche la hierarchie de l'objet ou array -- décomenter pour voir ;)
+        //affiche la hierarchie de l'objet ou array -- décommenter pour voir ;)
         /*$dump = var_dump($arr);*/
         
         //array de tout les capteurs
         $capAll = $obj->{'_items'};
         
         foreach($capAll as $cap){
-            $this->verifInBase($cap->{'name'});
+            $this->checkInBase($cap->{'name'});
         }
         
-        return new Response("");
+        $this->get('session')->getFlashBag()->add('info', 'Capteurs synchronisé avec succès');
+        
+        return $this->redirect($this->generateUrl('smartcampus_accueil'));
     }
     
-    public function verifInBase($name)
+    /** Verifi si capteur existe en BD ------------------------------------------------------------------ */
+    public function checkInBase($name)
     {
         $cap = $this->getDoctrine()
                 ->getRepository('SmartCampusBundle:Virtuel')
@@ -452,7 +477,7 @@ class SmartController extends Controller
                 ->findOneByName($name);
             if($cap === null)
             {
-                print("Le capteur ".$name." n'est pas dans la base<br>");
+                $this->addInBase($name);
             }
         }
         if($cap != null)
@@ -462,8 +487,86 @@ class SmartController extends Controller
                 ->findOneByName($name);
             if($cap != null)
             {
-                print("Le capteur ".$name." est déjà dans la base<br>");
+                //rien à faire
             }
+        }
+    }
+    
+    /** Ajoute capteur en BD ------------------------------------------------------------------ */
+    public function addInBase($name)
+    {
+        $em = $this->getDoctrine()->getManager();
+            
+        //recuperer le capteur
+        $url = "http://smartcampus.unice.fr/data-api/sensors";
+        $json = file_get_contents($url);
+        
+        if($json === null)
+        {
+            throw $this->createNotFoundException('Pas de Json trouve a l_adresse ['.$url.']');
+        }
+        
+        $obj = json_decode($json);
+        //obtenir la liste de tout les element
+        $capAll = $obj->{'_items'};
+        
+        $select = 0;
+        foreach($capAll as $cap){
+            if($cap->{'name'} == $name){
+                $i = $select;
+            }
+            $select = $select+1;
+        }
+        
+        //creation d'un capteur virtuel
+        if(preg_match('/V$/', $capAll[$i]->{'name'}))
+        {
+            //creation du capteur
+            $vir = new Virtuel();
+            $vir->setName($capAll[$i]->{'name'});
+            $vir->setKind($capAll[$i]->{'kind'});
+            $vir->setFrequency($capAll[$i]->{'frequency'});
+            $vir->setScript($capAll[$i]->{'script'});
+            
+            $em->persist($vir);
+            $em->flush();
+        }
+        
+        //creation d'un capteur physique
+        if(!preg_match('/V$/', $capAll[$i]->{'name'}))
+        {
+            //creation de la board si existe pas
+            $boardname = $capAll[$i]->{'board'};
+            $board = $this->getDoctrine()
+                    ->getRepository('SmartCampusBundle:Board')
+                    ->findOneByName($boardname);
+
+            if($board === null)
+            {
+                $board = new Board();
+                $board->setName($capAll[$i]->{'board'});
+                $em->persist($board);
+                $em->flush();
+            }
+            
+            //creation endpoint
+            $endpoint = new Endpoint();
+            $endpoint->setIp($capAll[$i]->{'endpoint'}->{'ip'});
+            $endpoint->setPort($capAll[$i]->{'endpoint'}->{'port'});
+            $em->persist($endpoint);
+            $em->flush();
+            
+            //creation du capteur
+            $phy = new Physique();
+            $phy->setName($capAll[$i]->{'name'});
+            $phy->setKind($capAll[$i]->{'kind'});
+            $phy->setFrequency($capAll[$i]->{'frequency'});
+            $phy->setPin($capAll[$i]->{'pin'});
+            $phy->setBoard($board);
+            $phy->setEndpoint($endpoint);
+            
+            $em->persist($phy);
+            $em->flush();
         }
     }
 }

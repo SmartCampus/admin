@@ -158,7 +158,7 @@ class __TwigTemplate_c56a9b7aa830095bbfa8d32819fe404c017621dcd161460e87855cedfe8
         // line 76
         echo $this->env->getExtension('routing')->getPath("smartcampus_json");
         echo "\" class=\"btn btn-warning bouton-accueil\">
-    <span class=\"glyphicon glyphicon-cloud-download\"></span> Récupérer Json
+    <span class=\"glyphicon glyphicon glyphicon-refresh\"></span> Synchronisation avec SmartCampus
 </a>
 ";
     }

@@ -50,7 +50,7 @@ class __TwigTemplate_65810d179c1de99cc8b6bc66f1def9ffc7cfcd7d5c2041b6fec555e8b9b
             echo "            <p>
                 <a  onclick=\"suppr('";
             // line 13
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("smartcampus_supprimerProp", array("id" => $this->getAttribute((isset($context["prop"]) ? $context["prop"] : $this->getContext($context, "prop")), "id"), "tag" => (isset($context["kind"]) ? $context["kind"] : $this->getContext($context, "kind")))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("smartcampus_supprimerProp", array("id" => $this->getAttribute((isset($context["prop"]) ? $context["prop"] : $this->getContext($context, "prop")), "id"))), "html", null, true);
             echo "');\" class=\"btn btn btn-danger\">
                     <span class=\"glyphicon glyphicon-minus-sign\"></span>
                 </a>

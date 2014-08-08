@@ -42,7 +42,7 @@ class __TwigTemplate_2c5b511928984ae1fec6a02d152939a132dc85d87656ca2dfd913eeeefc
         echo $this->env->getExtension('routing')->getPath("smartcampus_accueil");
         echo "';\"></span> Ajout d'une propriété</h1>
 
-\t<!--formulaire d'ajout d'une board-->
+\t<!--formulaire d'ajout d'une propriete-->
     <div class=\"well container\">
       <form class=\"form-horizontal\" role=\"form\" method=\"post\" ";
         // line 11
